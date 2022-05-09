@@ -1,6 +1,6 @@
-import { TcPlayer } from '../model/TcPlayer';
-import { TcTeam } from '../model/TcTeam';
-import { TcTournament } from '../model/TcTournament';
+import { TcPlayer } from './model/TcPlayer';
+import { TcTeam } from './model/TcTeam';
+import { TcTournament } from './model/TcTournament';
 
 const FORCE_REFRESH = false;
 export let DATA: TcTournament;
