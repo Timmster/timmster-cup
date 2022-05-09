@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DATA } from './data/DB';
+import { DATA, saveData } from './data/DB';
 import { TcPlayer } from './model/TcPlayer';
 
 @Component({
@@ -18,5 +18,9 @@ export class AppComponent {
 
   getTeams() {
     return DATA.teams;
+  }
+
+  save() {
+    saveData();
   }
 }

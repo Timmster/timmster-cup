@@ -2,9 +2,13 @@ import { TcPlayer } from '../model/TcPlayer';
 import { TcTeam } from '../model/TcTeam';
 import { TcTournament } from '../model/TcTournament';
 
-const FORCE_REFRESH = true;
+const FORCE_REFRESH = false;
 export let DATA: TcTournament;
 const KEY = 'DATA';
+
+export const saveData = () => {
+  localStorage.setItem(KEY, JSON.stringify(DATA));
+};
 
 export const initData = () => {
   const TEAMS = [
@@ -15,7 +19,7 @@ export const initData = () => {
   ];
   const PLAYERS = [new TcPlayer('Timm'), new TcPlayer('Wencke')];
   DATA = new TcTournament(PLAYERS, TEAMS);
-  localStorage.setItem(KEY, JSON.stringify(DATA));
+  saveData();
 };
 
 export const loadData = () => {
