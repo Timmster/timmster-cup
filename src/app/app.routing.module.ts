@@ -1,17 +1,14 @@
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DataComponent } from './data/data.component';
 
-@NgModule({
-  declarations: [DataComponent],
+const routes: Routes = [
+  { path: '', redirectTo: '/data', pathMatch: 'full' },
+  { path: 'data', component: DataComponent },
+];
 
-  imports: [
-    RouterModule.forRoot([
-      { path: '', redirectTo: 'data' },
-      { path: 'data', component: DataComponent },
-    ]),
-  ],
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [],
 })
 export class AppRoutingModule {}
