@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA } from 'src/app/DB';
+import { DATA, saveData } from 'src/app/DB';
 import { TcPlayer } from 'src/app/model/TcPlayer';
 
 @Component({
