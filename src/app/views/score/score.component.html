@@ -1,18 +1,11 @@
-iuhouhg
 <table>
   <tr>
     <th>Team</th>
-    <th>Punkte</th>
+    <th>Leben</th>
     <th></th>
   </tr>
-  <tr>
-    <td></td>
-
-    <td></td>
-    <td></td>
+  <tr *ngFor="let team of getTeams()">
+    <td>{{ team.name }}</td>
+    <td>❤️</td>
   </tr>
 </table>
-
-<div *ngFor="let team of getTeams()">
-  {{ team.name }}
-</div>
