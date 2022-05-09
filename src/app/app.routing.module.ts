@@ -4,7 +4,7 @@ import { DataComponent } from './views/data/data.component';
 import { ScoreComponent } from './views/score/score.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/data', pathMatch: 'full' },
+  { path: '', redirectTo: '/score', pathMatch: 'full' },
   { path: 'data', component: DataComponent },
   { path: 'score', component: ScoreComponent },
 ];
