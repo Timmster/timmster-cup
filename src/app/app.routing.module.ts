@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { DataComponent } from './data/data.component';
+import { DataComponent } from './views/data/data.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/data', pathMatch: 'full' },
