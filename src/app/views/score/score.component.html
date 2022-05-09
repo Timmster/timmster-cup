@@ -4,8 +4,8 @@
     <th>Punkte</th>
     <th></th>
   </tr>
-  <tr>
-    <td></td>
+  <tr *ngFor="let team of getData().teams">
+    <td>{{ team.name }}</td>
     <td></td>
     <td></td>
   </tr>
