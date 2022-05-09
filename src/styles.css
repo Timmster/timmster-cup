@@ -1,7 +1,15 @@
+body {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+}
+
 table {
   border-collapse: collapse;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 th,
