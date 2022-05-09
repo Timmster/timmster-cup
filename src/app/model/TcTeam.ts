@@ -1,10 +1,9 @@
 export class TcTeam {
   constructor(
     id: number,
-    name: string,
+    public name: string,
     shortName: string,
     color1: string,
     color2: string
   ) {}
 }
-

@@ -4,6 +4,7 @@ import { TcTournament } from '../model/TcTournament';
 
 const FORCE_REFRESH = true;
 export let DATA: TcTournament;
+const KEY = 'DATA';
 
 export const initData = () => {
   const TEAMS = [
@@ -14,14 +15,14 @@ export const initData = () => {
   ];
   const PLAYERS = [new TcPlayer('Timm'), new TcPlayer('Wencke')];
   DATA = new TcTournament(PLAYERS, TEAMS);
-  localStorage.setItem('DATA', JSON.stringify(DATA));
+  localStorage.setItem(KEY, JSON.stringify(DATA));
 };
 
 export const loadData = () => {
-  if (FORCE_REFRESH || localStorage.getItem(KEY_PLAYERS) == null) {
+  if (FORCE_REFRESH || localStorage.getItem(KEY) == null) {
     initData();
   } else {
-    PLAYERS = JSON.parse(localStorage.getItem(KEY_PLAYERS));
+    DATA = JSON.parse(localStorage.getItem(KEY));
   }
 };
 

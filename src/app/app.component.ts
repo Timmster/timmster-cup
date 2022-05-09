@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PLAYERS } from './data/DB';
+import { DATA } from './data/DB';
 import { TcPlayer } from './model/TcPlayer';
 
 @Component({
@@ -13,6 +13,10 @@ export class AppComponent {
   constructor() {}
 
   getSpieler() {
-    return PLAYERS;
+    return DATA.players;
+  }
+
+  getTeams() {
+    return DATA.teams;
   }
 }

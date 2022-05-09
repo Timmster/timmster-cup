@@ -2,5 +2,5 @@ import { TcPlayer } from './TcPlayer';
 import { TcTeam } from './TcTeam';
 
 export class TcTournament {
-  constructor(players: TcPlayer[], teams: TcTeam[]) {}
+  constructor(public players: TcPlayer[], public teams: TcTeam[]) {}
 }
