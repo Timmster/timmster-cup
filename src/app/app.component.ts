@@ -23,4 +23,15 @@ export class AppComponent {
   save() {
     saveData();
   }
+
+  newPlayer() {
+    DATA.players.push(new TcPlayer('Neu' + Math.floor(Math.random() * 100)));
+  }
+
+  deletePlayer(player: TcPlayer) {
+    const index = DATA.players.findIndex((p) => p.id == player.id);
+    if (index >= 0) {
+      DATA.players.splice(index, 1);
+    }
+  }
 }

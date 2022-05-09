@@ -30,4 +30,14 @@ export const loadData = () => {
   }
 };
 
+const autoSave = () => {
+  setTimeout(() => {
+    // Automatisch Speichern alle 2 Sekunden
+    saveData();
+    console.log('SAVED');
+    autoSave();
+  }, 2000);
+};
+
 loadData();
+autoSave();
