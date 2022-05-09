@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA, saveData } from 'src/app/DB';
-import { TcPlayer } from 'src/app/model/TcPlayer';
+import { DATA, saveData } from '../../DB';
+import { TcPlayer } from '../../model/TcPlayer';
 
 @Component({
   selector: 'app-data',

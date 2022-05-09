@@ -1,11 +1,11 @@
 <p>TIMMSTER CUP 2022</p>
-<button (click)="save()">SAVE</button>
 <button (click)="newPlayer()">NEW</button>
 
 <table>
   <tr>
     <th>Name</th>
     <th>Team</th>
+    <th>Aktiv?</th>
     <th></th>
   </tr>
   <tr *ngFor="let spieler of getSpieler()">
@@ -16,6 +16,7 @@
         <option *ngFor="let team of getTeams()">{{ team.name }}</option>
       </select>
     </td>
+    <td><input type="checkbox" [(ngModel)]="spieler.active" /></td>
     <td>
       <button (click)="deletePlayer(spieler)">DELETE</button>
     </td>

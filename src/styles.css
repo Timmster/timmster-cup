@@ -1,3 +1,30 @@
-p {
-  display: ;
+table {
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+th {
+  text-align: left;
+}
+
+th {
+  background-color: #55608f;
+}
+
+button {
+  color: white;
+  background-color: #55608f;
+  padding: 5px;
+  border-radius: 11%;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
