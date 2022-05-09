@@ -1,1 +1,10 @@
-<p>Bla</p>
+<p>TIMMSTER CUP 2022</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let spieler of getSpieler()">
+    <td>{{ spieler.name }}</td>
+  </tr>
+</table>

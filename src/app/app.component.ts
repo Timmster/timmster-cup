@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PLAYERS } from './data/DB';
 import { TcPlayer } from './model/TcPlayer';
 
 @Component({
@@ -11,7 +12,7 @@ export class AppComponent {
 
   constructor() {}
 
-  getErgebnis() {
-    return localStorage.getItem('');
+  getSpieler() {
+    return PLAYERS;
   }
 }
