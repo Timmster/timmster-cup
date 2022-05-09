@@ -11,7 +11,7 @@ export class ScoreComponent implements OnInit {
 
   ngOnInit() {}
 
-  getData() {
-    return DATA;
+  getTeams() {
+    return DATA.teams;
   }
 }
