@@ -1,4 +1,5 @@
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
+import { TcPlayer } from './model/TcPlayer';
 
 @Component({
   selector: 'my-app',
@@ -6,5 +7,11 @@ import { Component, VERSION } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name = 'Angular ' + VERSION.major;
+  spieler: TcPlayer[] = [];
+
+  constructor() {}
+
+  getErgebnis() {
+    return localStorage.getItem('');
+  }
 }
