@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { DataComponent } from './views/data/data.component';
+import { ScoreComponent } from './views/score/score.component';
 
 @NgModule({
-  declarations: [AppComponent, DataComponent],
+  declarations: [AppComponent, DataComponent, ScoreComponent],
   imports: [
     AppRoutingModule,
     FormsModule,
