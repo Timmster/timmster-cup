@@ -4,11 +4,11 @@ export class TcTeam {
   players: TcPlayer[] = [];
 
   constructor(
-    id: number,
+    public id: number,
     public name: string,
-    shortName: string,
-    color1: string,
-    color2: string
+    public shortName: string,
+    public color1: string,
+    public color2: string
   ) {}
 
   addPlayer(player: TcPlayer) {

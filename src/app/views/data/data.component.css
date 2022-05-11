@@ -4,3 +4,9 @@
   align-items: center;
   flex-direction: column;
 }
+
+.team {
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}

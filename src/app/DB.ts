@@ -12,15 +12,23 @@ export const saveData = () => {
 
 export const initData = () => {
   const TEAMS = [
-    new TcTeam(1, 'FC St. Pauli', 'FCSP', '', ''),
-    new TcTeam(2, 'Hamburger SV', 'HSV', '', ''),
-    new TcTeam(3, 'SV Werder Bremen', 'WERDER', '', ''),
-    new TcTeam(4, 'Team Ostsee - Hansa/Holstein', 'OSTSEE', '', ''),
+    new TcTeam(1, 'FC St. Pauli', 'FCSP', '#5B3A29', '#FFFFFF'),
+    new TcTeam(2, 'Hamburger SV', 'HSV', '#0A3F86', '#FFFFFF'),
+    new TcTeam(3, 'SV Werder Bremen', 'WERDER', '#1D9053', '#FFFFFF'),
+    new TcTeam(
+      4,
+      'Team Ostsee - Hansa/Holstein',
+      'OSTSEE',
+      '#CC3043',
+      '#FFFFFF'
+    ),
   ];
   const PLAYERS = [];
-  for (let i = 1; i < 25; i++) {
-    const p = new TcPlayer('Spieler' + i);
-    TEAMS[i % TEAMS.length].addPlayer(p);
+  const playerCount = 24;
+  const perTeam = Math.floor(playerCount / TEAMS.length);
+  for (let i = 0; i < playerCount; i++) {
+    const p = new TcPlayer('s' + (i + 1));
+    TEAMS[Math.floor(i / perTeam)].addPlayer(p);
     PLAYERS.push(p);
   }
 
