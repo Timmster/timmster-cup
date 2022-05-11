@@ -20,7 +20,7 @@ export const initData = () => {
   const PLAYERS = [];
   for (let i = 1; i < 25; i++) {
     const p = new TcPlayer('Spieler' + i);
-    p.team = TEAMS[i % TEAMS.length];
+    TEAMS[i % TEAMS.length].addPlayer(p);
     PLAYERS.push(p);
   }
 

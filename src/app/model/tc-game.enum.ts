@@ -1,0 +1,8 @@
+export enum TcGame {
+  SACKEN,
+  KICKERN,
+  TIPPKICK,
+  FIFA,
+  MARIO_KART,
+  LOOPING_LOUIE,
+}
