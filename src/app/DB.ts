@@ -2,7 +2,7 @@ import { TcPlayer } from './model/TcPlayer';
 import { TcTeam } from './model/TcTeam';
 import { TcTournament } from './model/TcTournament';
 
-const FORCE_REFRESH = false;
+const FORCE_REFRESH = true;
 export let DATA: TcTournament;
 const KEY = 'DATA';
 
@@ -17,7 +17,13 @@ export const initData = () => {
     new TcTeam(3, 'SV Werder Bremen', 'WERDER', '', ''),
     new TcTeam(4, 'Team Ostsee - Hansa/Holstein', 'OSTSEE', '', ''),
   ];
-  const PLAYERS = [new TcPlayer('Timm'), new TcPlayer('Wencke')];
+  const PLAYERS = [];
+  for (let i = 1; i < 25; i++) {
+    const p = new TcPlayer('Spieler' + i);
+    p.team = TEAMS[i % TEAMS.length];
+    PLAYERS.push(p);
+  }
+
   DATA = new TcTournament(PLAYERS, TEAMS);
   saveData();
 };
@@ -32,12 +38,12 @@ export const loadData = () => {
 
 const autoSave = () => {
   setTimeout(() => {
-    // Automatisch Speichern alle 2 Sekunden
+    // Automatisch Speichern alle 30 Sekunden
     saveData();
     console.log('SAVED');
     autoSave();
-  }, 2000);
+  }, 30000);
 };
 
 loadData();
-autoSave();
+// autoSave();
