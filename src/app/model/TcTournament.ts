@@ -9,9 +9,9 @@ export class TcTournament {
   constructor(public players: TcPlayer[], public teams: TcTeam[]) {}
 
   initGames(game: TcGame) {
-    if (game == TcGame.SACKEN){
-      this.games = this.games.filter(g => g.game != game);
-      this.teams.forEach();
+    if (game == TcGame.SACKEN) {
+      this.games = this.games.filter((g) => g.game != game);
+      this.teams.forEach((team) => {});
     }
   }
 }
