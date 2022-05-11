@@ -9,3 +9,32 @@
     <td>❤️</td>
   </tr>
 </table>
+
+<table>
+  <tr>
+    <th>Heim</th>
+    <th>Gast</th>
+    <th>Ergebnis</th>
+  </tr>
+  <tr *ngFor="let match of getMatches()">
+    <td>
+      <div
+        class="team"
+        [style.backgroundColor]="findTeam(match.playerHome1)?.color1"
+        [style.color]="findTeam(match.playerHome1)?.color2"
+      >
+        {{ findTeam(match.playerHome1)?.name }} / {{ match.playerHome1.name }}
+      </div>
+    </td>
+    <td>
+      <div
+        class="team"
+        [style.backgroundColor]="findTeam(match.playerAway1)?.color1"
+        [style.color]="findTeam(match.playerAway1)?.color2"
+      >
+        {{ findTeam(match.playerAway1)?.name }} / {{ match.playerAway1.name }}
+      </div>
+    </td>
+    <td></td>
+  </tr>
+</table>

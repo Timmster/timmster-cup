@@ -8,3 +8,9 @@
 table {
   width: 100%;
 }
+
+.team {
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}

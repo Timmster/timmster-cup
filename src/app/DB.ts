@@ -1,3 +1,4 @@
+import { TcGame } from './model/tc-game.enum';
 import { TcPlayer } from './model/TcPlayer';
 import { TcTeam } from './model/TcTeam';
 import { TcTournament } from './model/TcTournament';
@@ -12,16 +13,10 @@ export const saveData = () => {
 
 export const initData = () => {
   const TEAMS = [
-    new TcTeam(1, 'FC St. Pauli', 'FCSP', '#5B3A29', '#FFFFFF'),
-    new TcTeam(2, 'Hamburger SV', 'HSV', '#0A3F86', '#FFFFFF'),
-    new TcTeam(3, 'SV Werder Bremen', 'WERDER', '#1D9053', '#FFFFFF'),
-    new TcTeam(
-      4,
-      'Team Ostsee - Hansa/Holstein',
-      'OSTSEE',
-      '#CC3043',
-      '#FFFFFF'
-    ),
+    new TcTeam('FC St. Pauli', 'FCSP', '#5B3A29', '#FFFFFF'),
+    new TcTeam('Hamburger SV', 'HSV', '#0A3F86', '#FFFFFF'),
+    new TcTeam('SV Werder Bremen', 'WERDER', '#1D9053', '#FFFFFF'),
+    new TcTeam('Team Ostsee - Hansa/Holstein', 'OSTSEE', '#CC3043', '#FFFFFF'),
   ];
   const PLAYERS = [];
   const playerCount = 24;
@@ -33,6 +28,7 @@ export const initData = () => {
   }
 
   DATA = new TcTournament(PLAYERS, TEAMS);
+  DATA.initGames(TcGame.SACKEN);
   saveData();
 };
 
