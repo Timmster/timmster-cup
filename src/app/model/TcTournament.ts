@@ -20,13 +20,13 @@ export class TcTournament {
   initGames(game: TcGame) {
     if (game == TcGame.SACKEN) {
       this.matches = this.matches.filter((g) => g.game != game);
-      this.createGamesForDay(1, TcGame.SACKEN);
-      this.createGamesForDay(2, TcGame.SACKEN);
-      this.createGamesForDay(3, TcGame.SACKEN);
+      for (let day = 1; day < this.teams.length; day++) {
+        this.createGamesForDay(day, TcGame.SACKEN, 5);
+      }
     }
   }
 
-  createGamesForDay(day: number, game: TcGame) {
+  createGamesForDay(day: number, game: TcGame, sets: number) {
     const count = this.teams.length;
     const half = count / 2;
     const rows = [];
