@@ -42,13 +42,14 @@ export class TcTournament {
     });
     rows.forEach((team, index) => {
       if (index < half) {
-        this.matches.push(
-          TcMatch.create1on1(
-            game,
-            team.getNextPlayer(),
-            rows[index + half].getNextPlayer()
-          )
-        );
+        let home = team.getNextPlayer();
+        let away = rows[index + half].getNextPlayer();
+        if (index == 0 && day % 2 == 1) {
+          const swap = home;
+          home = away;
+          away = swap;
+        }
+        this.matches.push(TcMatch.create1on1(game, home, away));
       }
     });
   }
