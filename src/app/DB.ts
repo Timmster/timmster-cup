@@ -1,4 +1,3 @@
-import { TcGame } from './model/tc-game.enum';
 import { TcPlayer } from './model/TcPlayer';
 import { TcTeam } from './model/TcTeam';
 import { TcTournament } from './model/TcTournament';
@@ -28,7 +27,7 @@ export const initData = () => {
   }
 
   DATA = new TcTournament(PLAYERS, TEAMS);
-  DATA.initGames(TcGame.SACKEN);
+  DATA.initAllGames();
   saveData();
 };
 
