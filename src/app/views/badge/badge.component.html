@@ -1,10 +1,12 @@
 <div
-  *ngIf="player"
+  *ngIf="player1"
   class="badge"
   [style.backgroundColor]="team.color1"
   [style.color]="team.color2"
 >
-  <div class="player">{{ player.name }}</div>
+  <div class="player">
+    {{ player1.name }} {{ player2 ? ' / ' + player2.name : '' }}
+  </div>
   <div class="team">{{ team.name }}</div>
 </div>
 

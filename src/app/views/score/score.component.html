@@ -20,8 +20,18 @@
 
   <tr *ngFor="let match of getMatches()">
     <td><app-badge [game]="match.game"></app-badge></td>
-    <td><app-badge [player]="match.playerHome1"></app-badge></td>
-    <td><app-badge [player]="match.playerAway1"></app-badge></td>
+    <td>
+      <app-badge
+        [player1]="match.playerHome1"
+        [player2]="match.playerHome2"
+      ></app-badge>
+    </td>
+    <td>
+      <app-badge
+        [player1]="match.playerAway1"
+        [player2]="match.playerAway2"
+      ></app-badge>
+    </td>
     <td></td>
   </tr>
 </table>

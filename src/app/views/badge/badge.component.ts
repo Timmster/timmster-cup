@@ -13,16 +13,18 @@ export class BadgeComponent implements OnInit {
   @Input()
   game: TcGame;
   @Input()
-  player: TcPlayer;
+  player1: TcPlayer;
+  @Input()
+  player2: TcPlayer;
   team: TcTeam;
 
   constructor() {}
 
   ngOnInit() {
-    if (this.player) {
+    if (this.player1) {
       DATA.teams.forEach((t) => {
         t.players.forEach((p) => {
-          if (p.id === this.player.id) {
+          if (p.id === this.player1.id) {
             this.team = t;
           }
         });

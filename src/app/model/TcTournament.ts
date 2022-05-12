@@ -47,14 +47,27 @@ export class TcTournament {
     rows.forEach((team, index) => {
       if (index < half) {
         for (let set = 0; set < sets; set++) {
-          let home = team.getNextPlayer();
-          let away = rows[index + half].getNextPlayer();
+          let home1 = team.getNextPlayer();
+          let away1 = rows[index + half].getNextPlayer();
           if (index == 0 && day % 2 == 0) {
-            const swap = home;
-            home = away;
-            away = swap;
+            const swap = home1;
+            home1 = away1;
+            away1 = swap;
           }
-          this.matches.push(TcMatch.create1on1(game, home, away));
+          if (!is2On2) {
+            this.matches.push(TcMatch.create1on1(game, home1, away1));
+          } else {
+            let home2 = team.getNextPlayer();
+            let away2 = rows[index + half].getNextPlayer();
+            if (index == 0 && day % 2 == 0) {
+              const swap = home2;
+              home2 = away2;
+              away2 = swap;
+            }
+            this.matches.push(
+              TcMatch.create2on2(game, home1, home2, away1, away2)
+            );
+          }
         }
       }
     });

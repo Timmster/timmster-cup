@@ -10,7 +10,7 @@
   <tr *ngFor="let spieler of getSpieler()">
     <td><input [(ngModel)]="spieler.name" /></td>
     <td>
-      <app-badge [player]="spieler"></app-badge>
+      <app-badge [player1]="spieler"></app-badge>
     </td>
     <td><input type="checkbox" [(ngModel)]="spieler.active" /></td>
     <td>
