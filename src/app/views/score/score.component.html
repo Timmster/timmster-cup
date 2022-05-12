@@ -21,6 +21,7 @@
   <tr *ngFor="let match of getMatches()">
     <td></td>
     <td>
+      <app-badge [(player)]="match.playerHome1"></app-badge>
       <div
         class="team"
         [style.backgroundColor]="findTeam(match.playerHome1)?.color1"
