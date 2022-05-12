@@ -21,7 +21,7 @@ export class TcTournament {
     this.matches = this.matches.filter((g) => g.game != game);
     if (game == TcGame.SACKEN) {
       for (let season = 0; season < 3; season++) {
-        for (let day = 1; day < 3 * this.teams.length; day++) {
+        for (let day = 1; day < this.teams.length; day++) {
           this.createGamesForDay(day, TcGame.SACKEN, 1, false);
         }
       }
