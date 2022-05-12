@@ -18,15 +18,19 @@ export class TcTournament {
   }
 
   initGames(game: TcGame) {
+    this.matches = this.matches.filter((g) => g.game != game);
     if (game == TcGame.SACKEN) {
-      this.matches = this.matches.filter((g) => g.game != game);
       for (let day = 1; day < this.teams.length; day++) {
-        this.createGamesForDay(day, TcGame.SACKEN, 5);
+        this.createGamesForDay(day, TcGame.SACKEN, 5, false);
+      }
+    } else if (game == TcGame.FIFA) {
+      for (let day = 1; day < this.teams.length; day++) {
+        this.createGamesForDay(day, TcGame.FIFA, 1, true);
       }
     }
   }
 
-  createGamesForDay(day: number, game: TcGame, sets: number) {
+  createGamesForDay(day: number, game: TcGame, sets: number, is2On2: boolean) {
     const count = this.teams.length;
     const half = count / 2;
     const rows = [];
@@ -45,7 +49,7 @@ export class TcTournament {
         for (let set = 0; set < sets; set++) {
           let home = team.getNextPlayer();
           let away = rows[index + half].getNextPlayer();
-          if (index == 0 && day % 2 == 1) {
+          if (index == 0 && day % 2 == 0) {
             const swap = home;
             home = away;
             away = swap;
