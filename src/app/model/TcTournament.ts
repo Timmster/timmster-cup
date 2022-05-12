@@ -21,6 +21,27 @@ export class TcTournament {
     if (game == TcGame.SACKEN) {
       this.matches = this.matches.filter((g) => g.game != game);
 
+      const count = this.teams.length;
+      const upper: TcTeam[] = [];
+      const lower: TcTeam[] = [];
+      this.teams.forEach((team, index: number) => {
+        if (index == 0 || index < count) {
+          upper.push(team);
+        } else {
+          lower.push(team);
+        }
+      });
+
+      upper.forEach((team, index) => {
+        this.matches.push(
+          TcMatch.create1on1(
+            game,
+            team.getNextPlayer(),
+            lower[index].getNextPlayer()
+          )
+        );
+      });
+      /*
       this.teams.forEach((home, index1: number) => {
         this.teams.forEach((away, index2: number) => {
           if (index2 > index1) {
@@ -34,7 +55,7 @@ export class TcTournament {
             );
           }
         });
-      });
+      });*/
     }
   }
 }
