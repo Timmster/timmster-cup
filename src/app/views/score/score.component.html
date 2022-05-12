@@ -17,6 +17,7 @@
     <th>Gast</th>
     <th>Ergebnis</th>
   </tr>
+
   <tr *ngFor="let match of getMatches()">
     <td></td>
     <td>
@@ -29,7 +30,6 @@
       </div>
     </td>
     <td>
-      
       <div
         class="team"
         [style.backgroundColor]="findTeam(match.playerAway1)?.color1"
