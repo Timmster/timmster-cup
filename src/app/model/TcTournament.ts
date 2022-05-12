@@ -20,42 +20,30 @@ export class TcTournament {
   initGames(game: TcGame) {
     if (game == TcGame.SACKEN) {
       this.matches = this.matches.filter((g) => g.game != game);
+      this.createGamesForDay(1, TcGame.SACKEN);
+    }
+  }
 
-      const count = this.teams.length;
-      const upper: TcTeam[] = [];
-      const lower: TcTeam[] = [];
-      this.teams.forEach((team, index: number) => {
-        if (index == 0 || index < count) {
-          upper.push(team);
-        } else {
-          lower.push(team);
-        }
-      });
-
-      upper.forEach((team, index) => {
+  createGamesForDay(day: number, game: TcGame) {
+    const count = this.teams.length;
+    const rows = [];
+    this.teams.forEach((team, index) => {
+      if (index == 0) {
+        rows.push(team);
+      } else {
+        rows.push(team);
+      }
+    });
+    rows.forEach((team, index) => {
+      if (index < count / 2) {
         this.matches.push(
           TcMatch.create1on1(
             game,
             team.getNextPlayer(),
-            lower[index].getNextPlayer()
+            rows[index + count / 2].getNextPlayer()
           )
         );
-      });
-      /*
-      this.teams.forEach((home, index1: number) => {
-        this.teams.forEach((away, index2: number) => {
-          if (index2 > index1) {
-            const switchSides = (index2 + index1) % 2 == 1;
-            this.matches.push(
-              TcMatch.create1on1(
-                game,
-                switchSides ? home.getNextPlayer() : away.getNextPlayer(),
-                switchSides ? away.getNextPlayer() : home.getNextPlayer()
-              )
-            );
-          }
-        });
-      });*/
-    }
+      }
+    });
   }
 }
