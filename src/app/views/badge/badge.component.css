@@ -1,0 +1,17 @@
+.badge {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.team {
+  font-size: 0.8rem;
+}
+
+.player {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

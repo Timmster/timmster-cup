@@ -1,1 +1,8 @@
-test
+<div
+  class="badge"
+  [style.backgroundColor]="findTeam(player)?.color1"
+  [style.color]="findTeam(player)?.color2"
+>
+  <div class="player">{{ player.name }}</div>
+  <div class="team">{{ findTeam(player)?.name }}</div>
+</div>
