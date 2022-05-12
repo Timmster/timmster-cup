@@ -36,17 +36,4 @@ export class DataComponent implements OnInit {
       DATA.players.splice(index, 1);
     }
   }
-
-  findTeam(s: TcPlayer) {
-    let team = null;
-    DATA.teams.forEach((t) => {
-      t.players.forEach((p) => {
-        if (p.id === s.id) {
-          console.log(p, s);
-          team = t;
-        }
-      });
-    });
-    return team;
-  }
 }

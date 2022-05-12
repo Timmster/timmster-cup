@@ -1,8 +1,12 @@
 <div
+  *ngIf="player"
   class="badge"
-  [style.backgroundColor]="findTeam(player)?.color1"
-  [style.color]="findTeam(player)?.color2"
+  [style.backgroundColor]="team.color1"
+  [style.color]="team.color2"
 >
   <div class="player">{{ player.name }}</div>
-  <div class="team">{{ findTeam(player)?.name }}</div>
+  <div class="team">{{ team.name }}</div>
 </div>
+
+<div *ngIf="game" class="badge">test{{ gameTitle() }}</div>
+{{ game }}

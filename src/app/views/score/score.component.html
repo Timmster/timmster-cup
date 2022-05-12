@@ -19,13 +19,9 @@
   </tr>
 
   <tr *ngFor="let match of getMatches()">
-    <td></td>
-    <td>
-      <app-badge [player]="match.playerHome1"></app-badge>
-    </td>
-    <td>
-      <app-badge [player]="match.playerAway1"></app-badge>
-    </td>
+    <td><app-badge [game]="match.game"></app-badge></td>
+    <td><app-badge [player]="match.playerHome1"></app-badge></td>
+    <td><app-badge [player]="match.playerAway1"></app-badge></td>
     <td></td>
   </tr>
 </table>

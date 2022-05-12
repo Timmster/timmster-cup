@@ -19,17 +19,4 @@ export class ScoreComponent implements OnInit {
   getMatches() {
     return DATA.matches;
   }
-
-  findTeam(s: TcPlayer) {
-    let team = null;
-    DATA.teams.forEach((t) => {
-      t.players.forEach((p) => {
-        if (p.id === s.id) {
-          console.log(p, s);
-          team = t;
-        }
-      });
-    });
-    return team;
-  }
 }
