@@ -1,5 +1,5 @@
 export enum TcScore {
-  HOME,
-  AWAY,
-  DRAW,
+  HOME = 1,
+  AWAY = 2,
+  DRAW = 3,
 }

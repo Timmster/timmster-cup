@@ -22,7 +22,11 @@ export class ScoreComponent implements OnInit {
 
   getHearts(team: TcTeam, wins: boolean) {
     return DATA.matches.filter(
-      (m) => m.getTeamHome()?.id == team.id || m.getTeamAway()?.id == team.id
+      (m) =>
+        (m.getTeamHome()?.id == team.id && m.score == TcScore.HOME && wins) ||
+        (m.getTeamAway()?.id == team.id && m.score == TcScore.AWAY && wins) ||
+        (m.getTeamHome()?.id == team.id && m.score == TcScore.AWAY && !wins) ||
+        (m.getTeamAway()?.id == team.id && m.score == TcScore.HOME && !wins)
     );
   }
 
