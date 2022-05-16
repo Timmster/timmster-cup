@@ -17,7 +17,21 @@ export class ScoreComponent implements OnInit {
   ngOnInit() {}
 
   getTeams() {
-    return DATA.teams;
+    const thiz = this;
+    const sorter = function (m1: TcTeam, m2: TcTeam) {
+      const wins1 = thiz.getHearts(m2, true)?.length;
+      const wins2 = thiz.getHearts(m1, true)?.length;
+      const los1 = thiz.getHearts(m2, false)?.length;
+      const los2 = thiz.getHearts(m1, false)?.length;
+      if (wins1 != wins2) {
+        return wins1 - wins2;
+      }
+      if (los1 != los2) {
+        return los2 - los1;
+      }
+      return 0;
+    };
+    return DATA.teams.sort(sorter);
   }
 
   getHearts(team: TcTeam, wins: boolean) {
