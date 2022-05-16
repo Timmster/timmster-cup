@@ -16,7 +16,7 @@ export class ScoreComponent implements OnInit {
     return DATA.teams;
   }
 
-  getMatches() {
-    return DATA.matches;
+  getMatches(runningFilter: boolean) {
+    return DATA.matches.filter((m) => m.running == runningFilter);
   }
 }

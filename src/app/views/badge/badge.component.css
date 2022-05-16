@@ -5,6 +5,8 @@
   border-radius: 5px;
   align-items: center;
   text-align: center;
+  justify-content: center;
+  min-height: 50px;
 }
 
 .team {
@@ -14,6 +16,17 @@
 .player {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.sport {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: #fff 0px 0px 1px, #fff 0px 0px 1px, #fff 0px 0px 1px,
+    #fff 0px 0px 1px, #fff 0px 0px 1px, #fff 0px 0px 1px, #fff 0px 0px 1px,
+    #fff 0px 0px 1px, #fff 0px 0px 1px;
+  -webkit-font-smoothing: antialiased;
 }
 
 .sport0 {

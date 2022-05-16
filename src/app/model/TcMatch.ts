@@ -2,6 +2,7 @@ import { TcGame } from './tc-game.enum';
 import { TcPlayer } from './TcPlayer';
 
 export class TcMatch {
+  running: boolean = false;
   playerHome1: TcPlayer;
   playerAway1: TcPlayer;
   playerHome2: TcPlayer;

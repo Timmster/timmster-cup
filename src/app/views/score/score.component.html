@@ -12,13 +12,15 @@
 
 <table>
   <tr>
+    <th>Läuft?</th>
     <th>Disziplin</th>
     <th>Heim</th>
     <th>Gast</th>
     <th>Ergebnis</th>
   </tr>
 
-  <tr *ngFor="let match of getMatches()">
+  <tr *ngFor="let match of getMatches(false)">
+    <td><input type="checkbox" [(ngModel)]="match.running" /></td>
     <td><app-badge [game]="match.game"></app-badge></td>
     <td>
       <app-badge

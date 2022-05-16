@@ -10,6 +10,6 @@
   <div class="team">{{ team.name }}</div>
 </div>
 
-<div *ngIf="game != undefined" class="badge" [ngClass]="'sport' + game">
+<div *ngIf="game != undefined" class="badge sport" [ngClass]="'sport' + game">
   {{ gameTitle() }}
 </div>
