@@ -11,7 +11,7 @@
     <div *ngIf="editingPlayer == 1">
       <select [(ngModel)]="player1" (change)="changePlayer1($event)">
         <option [ngValue]="null"></option>
-        <option *ngFor="let p of player1?.getTeam()?.players" [ngValue]="p">
+        <option *ngFor="let p of getTeam(player1)?.players" [ngValue]="p">
           {{ p.name }}
         </option>
       </select>
@@ -22,7 +22,7 @@
     <div *ngIf="editingPlayer == 2">
       <select [(ngModel)]="player2" (change)="changePlayer2($event)">
         <option [ngValue]="null"></option>
-        <option *ngFor="let p of player2?.getTeam()?.players" [ngValue]="p">
+        <option *ngFor="let p of getTeam(player2)?.players" [ngValue]="p">
           {{ p.name }}
         </option>
       </select>

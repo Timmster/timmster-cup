@@ -10,11 +10,11 @@ export class TcPlayer {
     this.id = genUUID();
   }
 
-  getTeam(): TcTeam {
+  static getTeam(player: TcPlayer): TcTeam {
     let team = null;
     DATA.teams.forEach((t) => {
       t.players.forEach((p) => {
-        if (p.id == this.id) {
+        if (p.id == player.id) {
           team = t;
         }
       });

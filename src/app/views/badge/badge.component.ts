@@ -48,6 +48,10 @@ export class BadgeComponent implements OnInit {
     this.player2Change.emit(this.player2);
   }
 
+  getTeam(player: TcPlayer) {
+    return TcPlayer.getTeam(player);
+  }
+
   gameTitle() {
     if (this.game == TcGame.SACKEN) {
       return 'Sacken';

@@ -58,8 +58,12 @@
         (change)="onChangeScore($event, match)"
       >
         <option [ngValue]="null"></option>
-        <option [ngValue]="SCORES[0]">{{ match.getTeamHome()?.name }}</option>
-        <option [ngValue]="SCORES[2]">{{ match.getTeamAway()?.name }}</option>
+        <option [ngValue]="SCORES[0]">
+          {{ getTeamHome(match)?.name }}
+        </option>
+        <option [ngValue]="SCORES[2]">
+          {{ getTeamAway(match)?.name }}
+        </option>
       </select>
     </td>
   </tr>

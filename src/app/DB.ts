@@ -35,7 +35,8 @@ export const loadData = () => {
     initData();
     saveData();
   } else {
-    DATA = JSON.parse(localStorage.getItem(KEY));
+    DATA = new TcTournament([], []);
+    Object.assign(DATA, JSON.parse(localStorage.getItem(KEY)));
   }
 };
 

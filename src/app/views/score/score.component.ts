@@ -16,6 +16,14 @@ export class ScoreComponent implements OnInit {
 
   ngOnInit() {}
 
+  getTeamHome(m: TcMatch) {
+    return TcMatch.getTeamHome(m);
+  }
+
+  getTeamAway(m: TcMatch) {
+    return TcMatch.getTeamAway(m);
+  }
+
   getTeams() {
     const thiz = this;
     const sorter = function (m1: TcTeam, m2: TcTeam) {
@@ -37,10 +45,18 @@ export class ScoreComponent implements OnInit {
   getHearts(team: TcTeam, wins: boolean) {
     return DATA.matches.filter(
       (m) =>
-        (m.getTeamHome()?.id == team.id && m.score == TcScore.HOME && wins) ||
-        (m.getTeamAway()?.id == team.id && m.score == TcScore.AWAY && wins) ||
-        (m.getTeamHome()?.id == team.id && m.score == TcScore.AWAY && !wins) ||
-        (m.getTeamAway()?.id == team.id && m.score == TcScore.HOME && !wins)
+        (TcMatch.getTeamHome(m)?.id == team.id &&
+          m.score == TcScore.HOME &&
+          wins) ||
+        (TcMatch.getTeamAway(m)?.id == team.id &&
+          m.score == TcScore.AWAY &&
+          wins) ||
+        (TcMatch.getTeamHome(m)?.id == team.id &&
+          m.score == TcScore.AWAY &&
+          !wins) ||
+        (TcMatch.getTeamAway(m)?.id == team.id &&
+          m.score == TcScore.HOME &&
+          !wins)
     );
   }
 

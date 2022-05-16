@@ -36,11 +36,11 @@ export class TcMatch {
     return match;
   }
 
-  getTeamHome(): TcTeam {
-    return this.playerHome1?.getTeam();
+  static getTeamHome(match: TcMatch): TcTeam {
+    return TcPlayer.getTeam(match.playerHome1);
   }
 
-  getTeamAway(): TcTeam {
-    return this.playerAway1?.getTeam();
+  static getTeamAway(match: TcMatch): TcTeam {
+    return TcPlayer.getTeam(match.playerAway1);
   }
 }
