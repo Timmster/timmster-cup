@@ -5,7 +5,28 @@
   [style.color]="team.color2"
 >
   <div class="player">
-    {{ player1?.name }} {{ player2 ? ' / ' + player2.name : '' }}
+    <span *ngIf="editingPlayer != 1" (click)="editingPlayer = 1">{{
+      player1?.name
+    }}</span>
+    <div *ngIf="editingPlayer == 1">
+      <select [(ngModel)]="player1" (change)="changePlayer1($event)">
+        <option [ngValue]="null"></option>
+        <option *ngFor="let p of player1?.getTeam()?.players" [ngValue]="p">
+          {{ p.name }}
+        </option>
+      </select>
+    </div>
+    <span *ngIf="editingPlayer != 2 && player2" (click)="editingPlayer = 2">
+      {{ player2.name }}</span
+    >
+    <div *ngIf="editingPlayer == 2">
+      <select [(ngModel)]="player2" (change)="changePlayer2($event)">
+        <option [ngValue]="null"></option>
+        <option *ngFor="let p of player2?.getTeam()?.players" [ngValue]="p">
+          {{ p.name }}
+        </option>
+      </select>
+    </div>
   </div>
   <div class="team" [ngClass]="player1 ? '' : 'onlyteam'">{{ team.name }}</div>
 </div>

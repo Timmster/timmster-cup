@@ -37,10 +37,10 @@ export class TcMatch {
   }
 
   getTeamHome(): TcTeam {
-    return this.playerHome1.getTeam();
+    return this.playerHome1?.getTeam();
   }
 
   getTeamAway(): TcTeam {
-    return this.playerAway1.getTeam();
+    return this.playerAway1?.getTeam();
   }
 }

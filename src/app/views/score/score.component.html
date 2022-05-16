@@ -40,14 +40,14 @@
     <td><app-badge [game]="match.game"></app-badge></td>
     <td>
       <app-badge
-        [player1]="match.playerHome1"
-        [player2]="match.playerHome2"
+        [(player1)]="match.playerHome1"
+        [(player2)]="match.playerHome2"
       ></app-badge>
     </td>
     <td>
       <app-badge
-        [player1]="match.playerAway1"
-        [player2]="match.playerAway2"
+        [(player1)]="match.playerAway1"
+        [(player2)]="match.playerAway2"
       ></app-badge>
     </td>
     <td>
@@ -57,9 +57,9 @@
         [(ngModel)]="match.score"
         (change)="onChangeScore($event, match)"
       >
-        <option value="{{ null }}"></option>
-        <option value="{{ SCORES[0] }}">{{ match.getTeamHome()?.name }}</option>
-        <option value="{{ SCORES[2] }}">{{ match.getTeamAway()?.name }}</option>
+        <option [ngValue]="null"></option>
+        <option [ngValue]="SCORES[0]">{{ match.getTeamHome()?.name }}</option>
+        <option [ngValue]="SCORES[2]">{{ match.getTeamAway()?.name }}</option>
       </select>
     </td>
   </tr>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DATA } from '../../DB';
 import { TcGame } from '../../model/tc-game.enum';
 import { TcPlayer } from '../../model/TcPlayer';
@@ -12,12 +12,17 @@ import { TcTeam } from '../../model/TcTeam';
 export class BadgeComponent implements OnInit {
   @Input()
   game: TcGame;
-  @Input()
-  player1: TcPlayer;
-  @Input()
-  player2: TcPlayer;
+
+  @Input() player1: TcPlayer;
+  @Output() player1Change = new EventEmitter<TcPlayer>();
+
+  @Input() player2: TcPlayer;
+  @Output() player2Change = new EventEmitter<TcPlayer>();
+
   @Input()
   team: TcTeam;
+
+  editingPlayer = 0;
 
   constructor() {}
 
@@ -31,6 +36,16 @@ export class BadgeComponent implements OnInit {
         });
       });
     }
+  }
+
+  changePlayer1(event) {
+    this.editingPlayer = 0;
+    this.player1Change.emit(this.player1);
+  }
+
+  changePlayer2(event) {
+    this.editingPlayer = 0;
+    this.player2Change.emit(this.player2);
   }
 
   gameTitle() {
