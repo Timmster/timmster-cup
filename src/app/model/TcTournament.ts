@@ -30,6 +30,10 @@ export class TcTournament {
       for (let day = 1; day < TEAMS.length; day++) {
         this.createGamesForDay(day, TcGame.FIFA, 1, true);
       }
+    } else if (game == TcGame.KICKERN) {
+      for (let day = 1; day < TEAMS.length; day++) {
+        this.createGamesForDay(day, TcGame.KICKERN, 1, true);
+      }
     }
   }
 
