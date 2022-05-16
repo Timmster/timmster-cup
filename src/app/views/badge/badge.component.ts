@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DATA } from '../../DB';
+import { DATA, TEAMS } from '../../DB';
 import { TcGame } from '../../model/tc-game.enum';
 import { TcPlayer } from '../../model/TcPlayer';
 import { TcTeam } from '../../model/TcTeam';
@@ -28,7 +28,7 @@ export class BadgeComponent implements OnInit {
 
   ngOnInit() {
     if (this.player1) {
-      DATA.teams.forEach((t) => {
+      TEAMS.forEach((t) => {
         t.players.forEach((p) => {
           if (p.id === this.player1.id) {
             this.team = t;

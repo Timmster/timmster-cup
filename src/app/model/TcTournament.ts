@@ -1,3 +1,4 @@
+import { TEAMS } from '../DB';
 import { TcGame } from './tc-game.enum';
 import { TcMatch } from './TcMatch';
 import { TcPlayer } from './TcPlayer';
@@ -6,7 +7,7 @@ import { TcTeam } from './TcTeam';
 export class TcTournament {
   matches: TcMatch[] = [];
 
-  constructor(public players: TcPlayer[], public teams: TcTeam[]) {}
+  constructor(public players: TcPlayer[]) {}
 
   initAllGames() {
     this.initGames(TcGame.SACKEN);
@@ -21,27 +22,27 @@ export class TcTournament {
     this.matches = this.matches.filter((g) => g.game != game);
     if (game == TcGame.SACKEN) {
       for (let season = 0; season < 6; season++) {
-        for (let day = 1; day < this.teams.length; day++) {
+        for (let day = 1; day < TEAMS.length; day++) {
           this.createGamesForDay(day, TcGame.SACKEN, 1, false);
         }
       }
     } else if (game == TcGame.FIFA) {
-      for (let day = 1; day < this.teams.length; day++) {
+      for (let day = 1; day < TEAMS.length; day++) {
         this.createGamesForDay(day, TcGame.FIFA, 1, true);
       }
     }
   }
 
   createGamesForDay(day: number, game: TcGame, sets: number, is2On2: boolean) {
-    const count = this.teams.length;
+    const count = TEAMS.length;
     const half = count / 2;
     const rows = [];
-    this.teams.forEach((team, index) => {
+    TEAMS.forEach((team, index) => {
       if (index == 0 || index < half - day + 1 || index > count - day) {
         rows.push(team);
       }
     });
-    this.teams.forEach((team, index) => {
+    TEAMS.forEach((team, index) => {
       if (!rows.find((t) => t.id == team.id)) {
         rows.splice(half, 0, team);
       }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA, loadData, saveData } from '../../DB';
+import { DATA, loadData, saveData, TEAMS } from '../../DB';
 import { TcPlayer } from '../../model/TcPlayer';
 
 @Component({
@@ -19,7 +19,7 @@ export class DataComponent implements OnInit {
   }
 
   getTeams() {
-    return DATA.teams;
+    return TEAMS;
   }
 
   savePlan() {

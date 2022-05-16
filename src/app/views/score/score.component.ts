@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA } from '../../DB';
+import { DATA, TEAMS } from '../../DB';
 import { TcScore } from '../../model/tc-score';
 import { TcMatch } from '../../model/TcMatch';
 import { TcTeam } from '../../model/TcTeam';
@@ -39,7 +39,7 @@ export class ScoreComponent implements OnInit {
       }
       return 0;
     };
-    return DATA.teams.sort(sorter);
+    return TEAMS.sort(sorter);
   }
 
   getHearts(team: TcTeam, wins: boolean) {

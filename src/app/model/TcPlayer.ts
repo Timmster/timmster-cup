@@ -1,5 +1,5 @@
 import { genUUID } from '../control/Helpers';
-import { DATA } from '../DB';
+import { TEAMS } from '../DB';
 import { TcTeam } from './TcTeam';
 
 export class TcPlayer {
@@ -12,7 +12,7 @@ export class TcPlayer {
 
   static getTeam(player: TcPlayer): TcTeam {
     let team = null;
-    DATA.teams.forEach((t) => {
+    TEAMS.forEach((t) => {
       t.players.forEach((p) => {
         if (p.id == player.id) {
           team = t;

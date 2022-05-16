@@ -1,8 +1,8 @@
 <div
   *ngIf="player1 || team"
   class="badge"
-  [style.backgroundColor]="team.color1"
-  [style.color]="team.color2"
+  [style.backgroundColor]="team?.color1"
+  [style.color]="team?.color2"
 >
   <div class="player">
     <span *ngIf="editingPlayer != 1" (click)="editingPlayer = 1">{{
