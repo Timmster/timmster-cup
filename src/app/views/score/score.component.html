@@ -35,6 +35,13 @@
         [player2]="match.playerAway2"
       ></app-badge>
     </td>
-    <td></td>
+    <td>
+      <select [(ngModel)]="match.score">
+        <option (value)="(null)"></option>
+        <option (value)="(SCORES[0])">Heimsieg</option>
+        <option (value)="(SCORES[1])">Unentschieden</option>
+        <option (value)="(SCORES[2])">Auswärtssieg</option>
+      </select>
+    </td>
   </tr>
 </table>

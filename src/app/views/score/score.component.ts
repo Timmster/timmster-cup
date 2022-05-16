@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DATA } from '../../DB';
+import { TcScore } from '../../model/tc-score';
 
 @Component({
   selector: 'app-score',
@@ -7,6 +8,8 @@ import { DATA } from '../../DB';
   styleUrls: ['./score.component.css'],
 })
 export class ScoreComponent implements OnInit {
+  SCORES = [TcScore.HOME, TcScore.DRAW, TcScore.AWAY];
+
   constructor() {}
 
   ngOnInit() {}
