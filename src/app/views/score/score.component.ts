@@ -12,6 +12,8 @@ import { TcTeam } from '../../model/TcTeam';
 export class ScoreComponent implements OnInit {
   SCORES = [TcScore.HOME, TcScore.DRAW, TcScore.AWAY];
 
+  JSON = JSON;
+
   constructor() {}
 
   ngOnInit() {}

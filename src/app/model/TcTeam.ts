@@ -25,6 +25,6 @@ export class TcTeam {
   }
 
   static findPlayers(team: TcTeam) {
-    return PLAYERS.find((t) => t.team.id == team.id);
+    return PLAYERS.filter((t) => t.team.id == team.id);
   }
 }

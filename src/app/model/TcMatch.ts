@@ -1,4 +1,3 @@
-import { DATA } from '../DB';
 import { TcGame } from './tc-game.enum';
 import { TcScore } from './tc-score';
 import { TcPlayer } from './TcPlayer';
@@ -37,10 +36,10 @@ export class TcMatch {
   }
 
   static getTeamHome(match: TcMatch): TcTeam {
-    return TcPlayer.getTeam(match.playerHome1);
+    return match.playerHome1?.team;
   }
 
   static getTeamAway(match: TcMatch): TcTeam {
-    return TcPlayer.getTeam(match.playerAway1);
+    return match.playerAway1?.team;
   }
 }

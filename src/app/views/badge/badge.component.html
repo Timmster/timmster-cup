@@ -11,24 +11,24 @@
     <div *ngIf="editingPlayer == 1">
       <select [(ngModel)]="player1" (change)="changePlayer1($event)">
         <option [ngValue]="null"></option>
-        <option *ngFor="let p of getTeam(player1)?.players" [ngValue]="p">
+        <option *ngFor="let p of getPlayers(player1.team)" [ngValue]="p">
           {{ p.name }}
         </option>
       </select>
     </div>
     <span *ngIf="editingPlayer != 2 && player2" (click)="editingPlayer = 2">
-      {{ player2.name }}</span
+      / {{ player2.name }}</span
     >
     <div *ngIf="editingPlayer == 2">
       <select [(ngModel)]="player2" (change)="changePlayer2($event)">
         <option [ngValue]="null"></option>
-        <option *ngFor="let p of getTeam(player2)?.players" [ngValue]="p">
+        <option *ngFor="let p of getPlayers(player2.team)" [ngValue]="p">
           {{ p.name }}
         </option>
       </select>
     </div>
   </div>
-  <div class="team" [ngClass]="player1 ? '' : 'onlyteam'">{{ team.name }}</div>
+  <div class="team" [ngClass]="player1 ? '' : 'onlyteam'">{{ team?.name }}</div>
 </div>
 
 <div *ngIf="game != undefined" class="badge sport" [ngClass]="'sport' + game">

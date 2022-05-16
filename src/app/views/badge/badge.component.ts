@@ -28,13 +28,7 @@ export class BadgeComponent implements OnInit {
 
   ngOnInit() {
     if (this.player1) {
-      TEAMS.forEach((t) => {
-        t.players.forEach((p) => {
-          if (p.id === this.player1.id) {
-            this.team = t;
-          }
-        });
-      });
+      this.team = this.player1.team;
     }
   }
 
@@ -48,8 +42,8 @@ export class BadgeComponent implements OnInit {
     this.player2Change.emit(this.player2);
   }
 
-  getTeam(player: TcPlayer) {
-    return TcPlayer.getTeam(player);
+  getPlayers(team1: TcTeam) {
+    return TcTeam.findPlayers(team1);
   }
 
   gameTitle() {
