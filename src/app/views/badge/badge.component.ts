@@ -16,6 +16,7 @@ export class BadgeComponent implements OnInit {
   player1: TcPlayer;
   @Input()
   player2: TcPlayer;
+  @Input()
   team: TcTeam;
 
   constructor() {}

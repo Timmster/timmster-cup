@@ -1,13 +1,13 @@
 <div
-  *ngIf="player1"
+  *ngIf="player1 || team"
   class="badge"
   [style.backgroundColor]="team.color1"
   [style.color]="team.color2"
 >
   <div class="player">
-    {{ player1.name }} {{ player2 ? ' / ' + player2.name : '' }}
+    {{ player1?.name }} {{ player2 ? ' / ' + player2.name : '' }}
   </div>
-  <div class="team">{{ team.name }}</div>
+  <div class="team" [ngClass]="player1 ? '' : 'onlyteam'">{{ team.name }}</div>
 </div>
 
 <div *ngIf="game != undefined" class="badge sport" [ngClass]="'sport' + game">

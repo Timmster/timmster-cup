@@ -5,7 +5,7 @@
     <th></th>
   </tr>
   <tr *ngFor="let team of getTeams()">
-    <td>{{ team.name }}</td>
+    <td><app-badge [team]="team"></app-badge></td>
     <td>❤️</td>
   </tr>
 </table>
