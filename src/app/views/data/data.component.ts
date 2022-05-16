@@ -30,6 +30,15 @@ export class DataComponent implements OnInit {
     loadData();
   }
 
+  update() {
+    DATA.matches.forEach((m) => {
+      m.playerAway1 = DATA.players.find((p) => p.id == m.playerAway1?.id);
+      m.playerAway2 = DATA.players.find((p) => p.id == m.playerAway2?.id);
+      m.playerHome1 = DATA.players.find((p) => p.id == m.playerHome1?.id);
+      m.playerHome2 = DATA.players.find((p) => p.id == m.playerHome2?.id);
+    });
+  }
+
   newPlayer() {
     DATA.players.push(new TcPlayer('Neu' + Math.floor(Math.random() * 100)));
   }
