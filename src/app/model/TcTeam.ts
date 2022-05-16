@@ -2,6 +2,7 @@ import { PLAYERS } from '../DB';
 
 export class TcTeam {
   private nextPlayerIndex = 0;
+  private nextPlayerIndexRandom = 0;
 
   constructor(
     public id: number,
@@ -17,13 +18,13 @@ export class TcTeam {
       team.nextPlayerIndex++;
     } else {
       team.nextPlayerIndex = 1;
-      const shuffleArray = function (inputArray) {
-        inputArray.sort(() => Math.random() - 0.5);
-      };
-      // shuffleArray(players);
+      team.nextPlayerIndexRandom = Math.floor(Math.random() * players.length);
     }
-    console.log('players', team.nextPlayerIndex);
-    return players[team.nextPlayerIndex - 1];
+    let index = team.nextPlayerIndex - 1 + team.nextPlayerIndexRandom;
+    if (index >= players.length) {
+      index = index - players.length;
+    }
+    return players[index];
   }
 
   static findPlayers(team: TcTeam) {
