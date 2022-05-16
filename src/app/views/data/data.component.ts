@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA, saveData } from '../../DB';
+import { DATA, loadData, saveData } from '../../DB';
 import { TcPlayer } from '../../model/TcPlayer';
 
 @Component({
@@ -22,12 +22,20 @@ export class DataComponent implements OnInit {
     return DATA.teams;
   }
 
-  save() {
+  savePlan() {
     saveData();
+  }
+
+  loadPlan() {
+    loadData();
   }
 
   newPlayer() {
     DATA.players.push(new TcPlayer('Neu' + Math.floor(Math.random() * 100)));
+  }
+
+  newPlan() {
+    DATA.initAllGames();
   }
 
   deletePlayer(player: TcPlayer) {

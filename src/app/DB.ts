@@ -28,12 +28,12 @@ export const initData = () => {
 
   DATA = new TcTournament(PLAYERS, TEAMS);
   DATA.initAllGames();
-  saveData();
 };
 
 export const loadData = () => {
-  if (FORCE_REFRESH || localStorage.getItem(KEY) == null) {
+  if (localStorage.getItem(KEY) == null) {
     initData();
+    saveData();
   } else {
     DATA = JSON.parse(localStorage.getItem(KEY));
   }
@@ -48,5 +48,5 @@ const autoSave = () => {
   }, 30000);
 };
 
-loadData();
 // autoSave();
+loadData();
