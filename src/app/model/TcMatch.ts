@@ -1,4 +1,5 @@
 import { TcGame } from './tc-game.enum';
+import { TcScore } from './tc-score';
 import { TcPlayer } from './TcPlayer';
 
 export class TcMatch {
@@ -7,6 +8,7 @@ export class TcMatch {
   playerAway1: TcPlayer;
   playerHome2: TcPlayer;
   playerAway2: TcPlayer;
+  score: TcScore;
 
   private constructor(public game: TcGame) {}
 
