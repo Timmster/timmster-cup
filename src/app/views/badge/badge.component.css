@@ -32,16 +32,22 @@
 .sport0 {
   /* SACKEN */
   color: black;
-  background-color: #c0d6e4;
+  background-color: #afeeee;
   border: 2px solid black;
 }
 
 .sport1 {
-  background-color: #ffa500;
+  /* KICKERN */
+  color: black;
+  background-color: #eeeeee;
+  border: 2px solid black;
 }
 
 .sport2 {
-  background-color: #ff7f50;
+  /* TIPPKICK */
+  color: black;
+  background-color: #a0db8e;
+  border: 2px solid black;
 }
 
 .sport3 {
@@ -52,9 +58,15 @@
 }
 
 .sport4 {
-  background-color: #ffd7;
+  /*  */
+  color: black;
+  background-color: #fff68f;
+  border: 2px solid black;
 }
 
 .sport5 {
-  background-color: #ffd700;
+  /*  */
+  color: black;
+  background-color: #fff68f;
+  border: 2px solid black;
 }

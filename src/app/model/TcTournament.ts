@@ -11,11 +11,11 @@ export class TcTournament {
 
   initAllGames() {
     this.initGames(TcGame.SACKEN);
-    this.initGames(TcGame.FIFA);
     this.initGames(TcGame.KICKERN);
-    this.initGames(TcGame.LOOPING_LOUIE);
-    this.initGames(TcGame.MARIO_KART);
     this.initGames(TcGame.TIPPKICK);
+    this.initGames(TcGame.MARIO_KART);
+    this.initGames(TcGame.FIFA);
+    // this.initGames(TcGame.LOOPING_LOUIE);
   }
 
   initGames(game: TcGame) {
@@ -33,6 +33,16 @@ export class TcTournament {
     } else if (game == TcGame.KICKERN) {
       for (let day = 1; day < TEAMS.length; day++) {
         this.createGamesForDay(day, TcGame.KICKERN, 1, true);
+      }
+    } else if (game == TcGame.TIPPKICK) {
+      for (let season = 0; season < 2; season++) {
+        for (let day = 1; day < TEAMS.length; day++) {
+          this.createGamesForDay(day, TcGame.TIPPKICK, 1, true);
+        }
+      }
+    } else if (game == TcGame.MARIO_KART) {
+      for (let day = 1; day < TEAMS.length; day++) {
+        this.createGamesForDay(day, TcGame.MARIO_KART, 1, true);
       }
     }
   }
