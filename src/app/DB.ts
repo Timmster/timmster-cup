@@ -17,7 +17,7 @@ export const TEAMS = [
   new TcTeam(4, 'Team Ostsee - Hansa/Holstein', 'OSTSEE', '#CC3043', '#FFFFFF'),
 ];
 
-export const PLAYERS = [];
+export let PLAYERS = [];
 
 export const initData = () => {
   const playerCount = 24;
@@ -27,9 +27,7 @@ export const initData = () => {
     p.team = TEAMS[Math.floor(i / perTeam)];
     PLAYERS.push(p);
   }
-
-  DATA = new TcTournament(PLAYERS);
-  DATA.initAllGames();
+  initAllGames();
 };
 
 export const loadData = () => {
@@ -39,8 +37,13 @@ export const loadData = () => {
   } else {
     DATA = new TcTournament([]);
     DATA = JSON.parse(localStorage.getItem(KEY));
-    console.log(DATA);
+    PLAYERS = DATA.players;
   }
+};
+
+export const initAllGames = () => {
+  DATA = new TcTournament(PLAYERS);
+  DATA.initAllGames();
 };
 
 const autoSave = () => {

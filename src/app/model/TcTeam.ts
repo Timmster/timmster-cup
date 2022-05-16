@@ -13,15 +13,17 @@ export class TcTeam {
 
   static getNextPlayer(team: TcTeam) {
     const players = this.findPlayers(team);
-    team.nextPlayerIndex++;
-    if (team.nextPlayerIndex >= players.length) {
-      team.nextPlayerIndex = 0;
+    if (team.nextPlayerIndex < players.length) {
+      team.nextPlayerIndex++;
+    } else {
+      team.nextPlayerIndex = 1;
       const shuffleArray = function (inputArray) {
         inputArray.sort(() => Math.random() - 0.5);
       };
-      shuffleArray(players);
+      // shuffleArray(players);
     }
-    return players[team.nextPlayerIndex];
+    console.log('players', team.nextPlayerIndex);
+    return players[team.nextPlayerIndex - 1];
   }
 
   static findPlayers(team: TcTeam) {
