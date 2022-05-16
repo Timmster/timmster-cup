@@ -1,8 +1,8 @@
-import { TcPlayer } from './TcPlayer';
+import { PLAYERS } from '../DB';
 
 export class TcTeam {
   private nextPlayerIndex = 0;
-  players: TcPlayer[] = [];
+
   constructor(
     public id: number,
     public name: string,
@@ -11,22 +11,20 @@ export class TcTeam {
     public color2: string
   ) {}
 
-  static addPlayer(team: TcTeam, player: TcPlayer) {
-    if (!team.players.find((p) => p.id == player.id)) {
-      team.players.push(player);
-    }
-    team.nextPlayerIndex = Math.floor(Math.random() * team.players.length);
-  }
-
   static getNextPlayer(team: TcTeam) {
+    const players = this.findPlayers(team);
     team.nextPlayerIndex++;
-    if (team.nextPlayerIndex >= team.players.length) {
+    if (team.nextPlayerIndex >= players.length) {
       team.nextPlayerIndex = 0;
       const shuffleArray = function (inputArray) {
         inputArray.sort(() => Math.random() - 0.5);
       };
-      shuffleArray(team.players);
+      shuffleArray(players);
     }
-    return team.players[team.nextPlayerIndex];
+    return players[team.nextPlayerIndex];
+  }
+
+  static findPlayers(team: TcTeam) {
+    return PLAYERS.find((t) => t.team.id == team.id);
   }
 }

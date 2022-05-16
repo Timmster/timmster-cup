@@ -17,13 +17,14 @@ export const TEAMS = [
   new TcTeam(4, 'Team Ostsee - Hansa/Holstein', 'OSTSEE', '#CC3043', '#FFFFFF'),
 ];
 
+export const PLAYERS = [];
+
 export const initData = () => {
-  const PLAYERS = [];
   const playerCount = 24;
   const perTeam = Math.floor(playerCount / TEAMS.length);
   for (let i = 0; i < playerCount; i++) {
     const p = new TcPlayer('s' + (i + 1));
-    TcTeam.addPlayer(TEAMS[Math.floor(i / perTeam)], p);
+    p.team = TEAMS[Math.floor(i / perTeam)];
     PLAYERS.push(p);
   }
 
@@ -37,7 +38,8 @@ export const loadData = () => {
     saveData();
   } else {
     DATA = new TcTournament([]);
-    Object.assign(DATA, JSON.parse(localStorage.getItem(KEY)));
+    DATA = JSON.parse(localStorage.getItem(KEY));
+    console.log(DATA);
   }
 };
 
