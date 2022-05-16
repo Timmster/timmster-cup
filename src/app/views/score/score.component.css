@@ -17,13 +17,16 @@ table {
 }
 @keyframes blink {
   0% {
-    background-color: transparent;
+    background-color: #ffd700;
+  }
+  49% {
+    background-color: #ffd700;
   }
   50% {
-    background-color: orange;
+    background-color: white;
   }
   100% {
-    background-color: transparent;
+    background-color: white;
   }
 }
 @-webkit-keyframes blink {
@@ -31,7 +34,7 @@ table {
     background-color: transparent;
   }
   50% {
-    background-color: grey;
+    background-color: #ffff00;
   }
   100% {
     background-color: transparent;
