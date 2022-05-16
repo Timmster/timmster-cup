@@ -8,3 +8,31 @@
 table {
   width: 100%;
 }
+
+.running {
+  -webkit-animation: blink 2s linear infinite;
+  -moz-animation: blink 2s linear infinite;
+  animation: blink 2s linear infinite;
+}
+@keyframes blink {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: orange;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: grey;
+  }
+  100% {
+    background-color: transparent;
+  }
+}

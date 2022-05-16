@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DATA } from '../../DB';
-import { TcPlayer } from '../../model/TcPlayer';
 
 @Component({
   selector: 'app-score',
@@ -16,7 +15,11 @@ export class ScoreComponent implements OnInit {
     return DATA.teams;
   }
 
-  getMatches(runningFilter: boolean) {
+  getMatchesFiltered(runningFilter: boolean) {
     return DATA.matches.filter((m) => m.running == runningFilter);
+  }
+
+  getMatches() {
+    return this.getMatchesFiltered(true).concat(this.getMatchesFiltered(false));
   }
 }

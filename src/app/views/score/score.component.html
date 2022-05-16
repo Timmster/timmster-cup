@@ -18,9 +18,10 @@
     <th>Gast</th>
     <th>Ergebnis</th>
   </tr>
-
-  <tr *ngFor="let match of getMatches(false)">
-    <td><input type="checkbox" [(ngModel)]="match.running" /></td>
+  <tr *ngFor="let match of getMatches()">
+    <td [ngClass]="match.running ? 'running' : ''">
+      <input type="checkbox" [(ngModel)]="match.running" />
+    </td>
     <td><app-badge [game]="match.game"></app-badge></td>
     <td>
       <app-badge
