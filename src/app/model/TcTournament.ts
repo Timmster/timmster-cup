@@ -37,7 +37,7 @@ export class TcTournament {
     } else if (game == TcGame.TIPPKICK) {
       for (let season = 0; season < 2; season++) {
         for (let day = 1; day < TEAMS.length; day++) {
-          this.createGamesForDay(day, TcGame.TIPPKICK, 1, true);
+          this.createGamesForDay(day, TcGame.TIPPKICK, 1, false);
         }
       }
     } else if (game == TcGame.MARIO_KART) {
