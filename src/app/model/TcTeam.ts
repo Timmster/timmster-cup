@@ -15,18 +15,18 @@ export class TcTeam {
     this.id = genUUID();
   }
 
-  addPlayer(player: TcPlayer) {
-    if (!this.players.find((p) => p.id == player.id)) {
-      this.players.push(player);
+  static addPlayer(team: TcTeam, player: TcPlayer) {
+    if (!team.players.find((p) => p.id == player.id)) {
+      team.players.push(player);
     }
-    this.nextPlayerIndex = Math.floor(Math.random() * this.players.length);
+    team.nextPlayerIndex = Math.floor(Math.random() * team.players.length);
   }
 
-  getNextPlayer() {
-    this.nextPlayerIndex++;
-    if (this.nextPlayerIndex >= this.players.length) {
-      this.nextPlayerIndex = 0;
+  static getNextPlayer(team: TcTeam) {
+    team.nextPlayerIndex++;
+    if (team.nextPlayerIndex >= team.players.length) {
+      team.nextPlayerIndex = 0;
     }
-    return this.players[this.nextPlayerIndex];
+    return team.players[team.nextPlayerIndex];
   }
 }

@@ -22,7 +22,7 @@ export const initData = () => {
   const perTeam = Math.floor(playerCount / TEAMS.length);
   for (let i = 0; i < playerCount; i++) {
     const p = new TcPlayer('s' + (i + 1));
-    TEAMS[Math.floor(i / perTeam)].addPlayer(p);
+    TcTeam.addPlayer(TEAMS[Math.floor(i / perTeam)], p);
     PLAYERS.push(p);
   }
 

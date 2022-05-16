@@ -49,8 +49,8 @@ export class TcTournament {
     rows.forEach((team, index) => {
       if (index < half) {
         for (let set = 0; set < sets; set++) {
-          let home1 = team.getNextPlayer();
-          let away1 = rows[index + half].getNextPlayer();
+          let home1 = TcTeam.getNextPlayer(team);
+          let away1 = TcTeam.getNextPlayer(rows[index + half]);
           if (index == 0 && day % 2 == 0) {
             const swap = home1;
             home1 = away1;
@@ -59,8 +59,8 @@ export class TcTournament {
           if (!is2On2) {
             this.matches.push(TcMatch.create1on1(game, home1, away1));
           } else {
-            let home2 = team.getNextPlayer();
-            let away2 = rows[index + half].getNextPlayer();
+            let home2 = TcTeam.getNextPlayer(team);
+            let away2 = TcTeam.getNextPlayer(rows[index + half]);
             if (index == 0 && day % 2 == 0) {
               const swap = home2;
               home2 = away2;
