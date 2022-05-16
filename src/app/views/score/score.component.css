@@ -13,6 +13,7 @@ table {
   -webkit-animation: blink 2s linear infinite;
   -moz-animation: blink 2s linear infinite;
   animation: blink 2s linear infinite;
+  height: 140px;
 }
 @keyframes blink {
   0% {
@@ -35,4 +36,9 @@ table {
   100% {
     background-color: transparent;
   }
+}
+
+.score {
+  width: 100%;
+  min-width: 200px;
 }

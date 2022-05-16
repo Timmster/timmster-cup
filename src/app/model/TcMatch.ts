@@ -1,6 +1,8 @@
+import { DATA } from '../DB';
 import { TcGame } from './tc-game.enum';
 import { TcScore } from './tc-score';
 import { TcPlayer } from './TcPlayer';
+import { TcTeam } from './TcTeam';
 
 export class TcMatch {
   running: boolean = false;
@@ -32,5 +34,13 @@ export class TcMatch {
     match.playerHome2 = playerHome2;
     match.playerAway2 = playerAway2;
     return match;
+  }
+
+  getTeamHome(): TcTeam {
+    return this.playerHome1.getTeam();
+  }
+
+  getTeamAway(): TcTeam {
+    return this.playerAway1.getTeam();
   }
 }

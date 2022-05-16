@@ -1,12 +1,24 @@
 <table>
   <tr>
     <th>Team</th>
-    <th>Leben</th>
-    <th></th>
+    <th width="50%">Leben</th>
   </tr>
   <tr *ngFor="let team of getTeams()">
     <td><app-badge [team]="team"></app-badge></td>
-    <td>❤️</td>
+    <td>
+      <div style="display: flex; flex-direction: column;">
+        <div>
+          <span *ngFor="let h of getHearts(team, true)">❤️ </span>
+        </div>
+        <div>
+          <span
+            style="filter: grayscale(100%);"
+            *ngFor="let h of getHearts(team, false)"
+            >💔
+          </span>
+        </div>
+      </div>
+    </td>
   </tr>
 </table>
 
@@ -15,11 +27,14 @@
     <th>Läuft?</th>
     <th>Disziplin</th>
     <th>Heim</th>
-    <th>Gast</th>
+    <th>Auswärts</th>
     <th>Ergebnis</th>
   </tr>
-  <tr *ngFor="let match of getMatches()">
-    <td [ngClass]="match.running ? 'running' : ''">
+  <tr
+    *ngFor="let match of getMatches(); let i = index"
+    [ngClass]="match.running ? 'running' : ''"
+  >
+    <td>
       <input type="checkbox" [(ngModel)]="match.running" />
     </td>
     <td><app-badge [game]="match.game"></app-badge></td>
@@ -36,11 +51,15 @@
       ></app-badge>
     </td>
     <td>
-      <select [(ngModel)]="match.score">
+      <select
+        *ngIf="match.running || match.score"
+        class="score"
+        [(ngModel)]="match.score"
+        (change)="onChangeScore($event, match)"
+      >
         <option (value)="(null)"></option>
-        <option (value)="(SCORES[0])">Heimsieg</option>
-        <option (value)="(SCORES[1])">Unentschieden</option>
-        <option (value)="(SCORES[2])">Auswärtssieg</option>
+        <option (value)="(SCORES[0])">{{ match.getTeamHome()?.name }}</option>
+        <option (value)="(SCORES[2])">{{ match.getTeamAway()?.name }}</option>
       </select>
     </td>
   </tr>
