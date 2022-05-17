@@ -88,7 +88,7 @@ export class ScoreComponent implements OnInit {
   onChangeScore(event, match: TcMatch) {
     if (match.score) {
       match.running = false;
-      const nextGames = DATA.matches.filter(
+      let nextGames = DATA.matches.filter(
         (m) => m.game == match.game && !m.score && m.running != true
       );
       const thiz = this;
@@ -96,12 +96,28 @@ export class ScoreComponent implements OnInit {
         const t1 = m.playerHome1.team;
         const t2 = m.playerAway1.team;
         const running1 =
-          thiz.getHearts(t1, true).length + thiz.getHearts(t1, false).length;
+          1000 -
+          thiz.getHearts(t1, true).length +
+          thiz.getHearts(t1, false).length +
+          thiz.getHearts(t2, true).length +
+          thiz.getHearts(t2, false).length;
+        //  +
+        // TcTeam.countRunning(t1) +
+        // TcTeam.countRunning(t2)
+        const t3 = m.playerHome1.team;
+        const t4 = m.playerAway1.team;
         const running2 =
-          thiz.getHearts(t2, true).length + thiz.getHearts(t2, false).length;
-        return 1000 - running2 - running1;
+          1000 -
+          thiz.getHearts(t3, true).length +
+          thiz.getHearts(t3, false).length +
+          thiz.getHearts(t4, true).length +
+          thiz.getHearts(t4, false).length;
+        //  +
+        // TcTeam.countRunning(t3) +
+        // TcTeam.countRunning(t4)
+        return running1 - running2;
       };
-      nextGames.sort(sorter);
+      nextGames = nextGames.sort(sorter);
       if (nextGames.length > 0) {
         nextGames[0].running = true;
       }
