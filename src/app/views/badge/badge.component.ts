@@ -13,6 +13,8 @@ export class BadgeComponent implements OnInit {
   @Input()
   game: TcGame;
 
+  @Input() allowChange: boolean;
+
   @Input() player1: TcPlayer;
   @Output() player1Change = new EventEmitter<TcPlayer>();
 

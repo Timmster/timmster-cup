@@ -5,9 +5,11 @@
   [style.color]="team?.color2"
 >
   <div class="title">
-    <span *ngIf="editingPlayer != 1" (click)="editingPlayer = 1">{{
-      player1?.name
-    }}</span>
+    <span
+      *ngIf="editingPlayer != 1"
+      (click)="editingPlayer = allowChange ? 1 : 0"
+      >{{ player1?.name }}</span
+    >
     <div *ngIf="editingPlayer == 1">
       <select [(ngModel)]="player1" (change)="changePlayer1($event)">
         <option [ngValue]="null"></option>
@@ -16,7 +18,10 @@
         </option>
       </select>
     </div>
-    <span *ngIf="editingPlayer != 2 && player2" (click)="editingPlayer = 2">
+    <span
+      *ngIf="editingPlayer != 2 && player2"
+      (click)="editingPlayer = allowChange ? 2 : 0"
+    >
       / {{ player2.name }}</span
     >
     <div *ngIf="editingPlayer == 2">

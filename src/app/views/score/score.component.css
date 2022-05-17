@@ -45,3 +45,31 @@ table {
   width: 100%;
   min-width: 200px;
 }
+
+.scorebutton {
+  width: 10vh;
+  background-color: #f5f5dc;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 2px solid black;
+  min-height: 10vh;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal * {
+  margin-top: 5vh;
+}
+
+.modal span {
+  font-size: 3rem;
+}
+
+table {
+  table-layout: fixed;
+}

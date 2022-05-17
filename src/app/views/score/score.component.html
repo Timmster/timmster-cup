@@ -1,70 +1,99 @@
-<table>
-  <tr>
-    <th>Team</th>
-    <th width="50%">Siege und Niederlagen</th>
-  </tr>
-  <tr *ngFor="let team of getTeams()">
-    <td><app-badge [team]="team"></app-badge></td>
-    <td>
-      <div style="display: flex; flex-direction: column;">
-        <div>
-          <span *ngFor="let h of getHearts(team, true)">❤️ </span>
+<div *ngIf="!modal" style="width:100%">
+  <table>
+    <tr>
+      <th>Team</th>
+      <th width="50%">Siege und Niederlagen</th>
+    </tr>
+    <tr *ngFor="let team of getTeams()">
+      <td><app-badge [team]="team"></app-badge></td>
+      <td>
+        <div style="display: flex; flex-direction: column;">
+          <div>
+            <span *ngFor="let h of getHearts(team, true)">❤️ </span>
+          </div>
+          <div>
+            <span
+              style="filter: grayscale(100%);"
+              *ngFor="let h of getHearts(team, false)"
+              >💔
+            </span>
+          </div>
         </div>
-        <div>
-          <span
-            style="filter: grayscale(100%);"
-            *ngFor="let h of getHearts(team, false)"
-            >💔
-          </span>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
+      </td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <th>Läuft?</th>
-    <th>Disziplin</th>
-    <th>Heim</th>
-    <th>Auswärts</th>
-    <th>Ergebnis</th>
-  </tr>
-  <tr
-    *ngFor="let match of getMatches(); let i = index"
-    [ngClass]="match.running ? 'running' : ''"
+  <table>
+    <tr>
+      <th *ngIf="isAdmin()">Läuft?</th>
+      <th></th>
+      <th>Heim</th>
+      <th>Auswärts</th>
+      <th></th>
+    </tr>
+    <tr
+      *ngFor="let match of getMatches(); let i = index"
+      [ngClass]="match.running ? 'running' : ''"
+    >
+      <td *ngIf="isAdmin()">
+        <input type="checkbox" [(ngModel)]="match.running" />
+      </td>
+      <td><app-badge [game]="match.game"></app-badge></td>
+      <td>
+        <app-badge
+          [(player1)]="match.playerHome1"
+          [(player2)]="match.playerHome2"
+        ></app-badge>
+      </td>
+      <td>
+        <app-badge
+          [(player1)]="match.playerAway1"
+          [(player2)]="match.playerAway2"
+        ></app-badge>
+      </td>
+      <td>
+        <button
+          *ngIf="match.running && !match.score"
+          class="scorebutton"
+          (click)="modal = match"
+        >
+          Ergebnis Eintragen
+        </button>
+        <select
+          *ngIf="match.score"
+          class="score"
+          [(ngModel)]="match.score"
+          (change)="onChangeScore($event, match)"
+        >
+          <option [ngValue]="null"></option>
+          <option [ngValue]="SCORES[0]">
+            {{ getTeamHome(match)?.name }}
+          </option>
+          <option [ngValue]="SCORES[2]">
+            {{ getTeamAway(match)?.name }}
+          </option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="modal" class="modal">
+  <span>Wer hat gewonnen?</span>
+  <app-badge
+    (click)="
+      modal.score = SCORES[0]; onChangeScore($event, modal); modal = null
+    "
+    [(player1)]="modal.playerHome1"
+    [(player2)]="modal.playerHome2"
+  ></app-badge>
+  <app-badge
+    (click)="
+      modal.score = SCORES[2]; onChangeScore($event, modal); modal = null
+    "
+    [(player1)]="modal.playerAway1"
+    [(player2)]="modal.playerAway2"
+  ></app-badge>
+  <a style="text-align: center; cursor:pointer;" (click)="modal = null"
+    >Zurück</a
   >
-    <td>
-      <input type="checkbox" [(ngModel)]="match.running" />
-    </td>
-    <td><app-badge [game]="match.game"></app-badge></td>
-    <td>
-      <app-badge
-        [(player1)]="match.playerHome1"
-        [(player2)]="match.playerHome2"
-      ></app-badge>
-    </td>
-    <td>
-      <app-badge
-        [(player1)]="match.playerAway1"
-        [(player2)]="match.playerAway2"
-      ></app-badge>
-    </td>
-    <td>
-      <select
-        *ngIf="match.running || match.score"
-        class="score"
-        [(ngModel)]="match.score"
-        (change)="onChangeScore($event, match)"
-      >
-        <option [ngValue]="null"></option>
-        <option [ngValue]="SCORES[0]">
-          {{ getTeamHome(match)?.name }}
-        </option>
-        <option [ngValue]="SCORES[2]">
-          {{ getTeamAway(match)?.name }}
-        </option>
-      </select>
-    </td>
-  </tr>
-</table>
+</div>

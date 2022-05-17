@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA, initAllGames, TEAMS } from '../../DB';
+import { AppComponent } from '../../app.component';
+import { DATA, TEAMS } from '../../DB';
 import { TcScore } from '../../model/tc-score';
 import { TcMatch } from '../../model/TcMatch';
 import { TcTeam } from '../../model/TcTeam';
@@ -11,12 +12,16 @@ import { TcTeam } from '../../model/TcTeam';
 })
 export class ScoreComponent implements OnInit {
   SCORES = [TcScore.HOME, TcScore.DRAW, TcScore.AWAY];
-
   JSON = JSON;
+  modal: TcMatch;
 
   constructor() {}
 
   ngOnInit() {}
+
+  isAdmin() {
+    return AppComponent.ADMIN;
+  }
 
   getTeamHome(m: TcMatch) {
     return TcMatch.getTeamHome(m);
@@ -82,7 +87,11 @@ export class ScoreComponent implements OnInit {
       }
       return 0;
     };
-    return DATA.matches.sort(sorter);
+    if (this.isAdmin()) {
+      return DATA.matches.sort(sorter);
+    } else {
+      return DATA.matches.sort(sorter).filter((m) => m.running);
+    }
   }
 
   onChangeScore(event, match: TcMatch) {

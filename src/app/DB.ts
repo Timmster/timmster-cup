@@ -42,7 +42,7 @@ const initNames = [
   'Horner',
   'Ögi',
   'Svenja',
-  'Franzose',
+  'Loucas',
   'Conny',
 ];
 
