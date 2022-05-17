@@ -100,10 +100,9 @@ export class ScoreComponent implements OnInit {
           thiz.getHearts(t1, true).length +
           thiz.getHearts(t1, false).length +
           thiz.getHearts(t2, true).length +
-          thiz.getHearts(t2, false).length;
-        //  +
-        // TcTeam.countRunning(t1) +
-        // TcTeam.countRunning(t2)
+          thiz.getHearts(t2, false).length +
+          TcTeam.countRunning(t1) +
+          TcTeam.countRunning(t2);
         const t3 = m.playerHome1.team;
         const t4 = m.playerAway1.team;
         const running2 =
@@ -111,10 +110,9 @@ export class ScoreComponent implements OnInit {
           thiz.getHearts(t3, true).length +
           thiz.getHearts(t3, false).length +
           thiz.getHearts(t4, true).length +
-          thiz.getHearts(t4, false).length;
-        //  +
-        // TcTeam.countRunning(t3) +
-        // TcTeam.countRunning(t4)
+          thiz.getHearts(t4, false).length +
+          TcTeam.countRunning(t3) +
+          TcTeam.countRunning(t4);
         return running1 - running2;
       };
       nextGames = nextGames.sort(sorter);
