@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA, initAllGames, loadData, saveData, TEAMS } from '../../DB';
+import {
+  DATA,
+  initAllGames,
+  loadData,
+  saveData,
+  TEAMS,
+  SAVEGAMES,
+} from '../../DB';
 import { TcPlayer } from '../../model/TcPlayer';
-import { TcTournament } from '../../model/TcTournament';
 
 @Component({
   selector: 'app-data',
@@ -9,6 +15,9 @@ import { TcTournament } from '../../model/TcTournament';
   styleUrls: ['./data.component.css'],
 })
 export class DataComponent implements OnInit {
+  SAVEGAMES = SAVEGAMES;
+  savegame: string;
+
   spieler: TcPlayer[] = [];
 
   constructor() {}
@@ -28,7 +37,7 @@ export class DataComponent implements OnInit {
   }
 
   loadPlan() {
-    loadData();
+    loadData(this.savegame);
   }
 
   update() {

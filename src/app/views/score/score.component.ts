@@ -18,10 +18,6 @@ export class ScoreComponent implements OnInit {
 
   ngOnInit() {}
 
-  newPlan() {
-    initAllGames();
-  }
-
   getTeamHome(m: TcMatch) {
     return TcMatch.getTeamHome(m);
   }

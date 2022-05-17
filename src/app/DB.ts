@@ -3,11 +3,17 @@ import { TcTeam } from './model/TcTeam';
 import { TcTournament } from './model/TcTournament';
 
 const FORCE_REFRESH = true;
-export let DATA: TcTournament;
+const KEY_SAVEGAMES = 'SAVEGAMES';
+export let SAVEGAMES = [];
 const KEY = 'DATA';
+export let DATA: TcTournament;
 
 export const saveData = () => {
-  localStorage.setItem(KEY, JSON.stringify(DATA));
+  const date = new Date().getTime();
+  const key = KEY + date;
+  localStorage.setItem(key, JSON.stringify(DATA));
+  SAVEGAMES.push(key);
+  localStorage.setItem(KEY_SAVEGAMES, JSON.stringify(SAVEGAMES));
 };
 
 export const TEAMS = [
@@ -20,6 +26,9 @@ export const TEAMS = [
 export let PLAYERS = [];
 
 export const initData = () => {
+  SAVEGAMES = JSON.parse(localStorage.getItem(KEY_SAVEGAMES));
+  SAVEGAMES = SAVEGAMES ? SAVEGAMES : [];
+
   const playerCount = 24;
   const perTeam = Math.floor(playerCount / TEAMS.length);
   for (let i = 0; i < playerCount; i++) {
@@ -30,13 +39,13 @@ export const initData = () => {
   initAllGames();
 };
 
-export const loadData = () => {
-  if (localStorage.getItem(KEY) == null) {
+export const loadData = (savegame: string) => {
+  if (localStorage.getItem(savegame) == null) {
     initData();
     saveData();
   } else {
     DATA = new TcTournament([]);
-    DATA = JSON.parse(localStorage.getItem(KEY));
+    DATA = JSON.parse(localStorage.getItem(savegame));
     PLAYERS = DATA.players;
   }
 };
