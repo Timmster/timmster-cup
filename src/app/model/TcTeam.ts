@@ -1,6 +1,9 @@
 import { PLAYERS } from '../DB';
 
 export class TcTeam {
+  public nextPlayerIndex = 0;
+  public lastPlayerIndexStart = 0;
+
   constructor(
     public id: number,
     public name: string,

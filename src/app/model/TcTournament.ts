@@ -21,6 +21,7 @@ export class TcTournament {
 
   static initGames(game: TcGame, t: TcTournament) {
     t.matches = t.matches.filter((g) => g.game != game);
+    TcTournament.shakeAll();
     if (game == TcGame.SACKEN) {
       for (let season = 0; season < 5; season++) {
         for (let day = 1; day < TEAMS.length; day++) {
@@ -46,6 +47,19 @@ export class TcTournament {
         TcTournament.createGamesForDay(day, TcGame.MARIO_KART, true, t);
       }
     }
+  }
+
+  static shakeAll() {
+    TEAMS.forEach((team) => {
+      TcTournament.shake(team);
+    });
+  }
+
+  static shake(team: TcTeam) {
+    team.nextPlayerIndex = Math.floor(
+      Math.random() * TcTeam.findPlayers(team).length
+    );
+    team.lastPlayerIndexStart = team.nextPlayerIndex;
   }
 
   static createGamesForDay(
@@ -92,24 +106,19 @@ export class TcTournament {
     });
   }
 
-  static nextPlayerIndex = 0;
-  static nextPlayerIndexRandom = 0;
-
   static getNextPlayer(team: TcTeam) {
     const players = TcTeam.findPlayers(team);
-    if (TcTournament.nextPlayerIndex < players.length) {
-      TcTournament.nextPlayerIndex++;
-    } else {
-      TcTournament.nextPlayerIndex = 1;
-      TcTournament.nextPlayerIndexRandom = Math.floor(
-        Math.random() * players.length
-      );
+    team.nextPlayerIndex++;
+    if (team.nextPlayerIndex >= players.length) {
+      team.nextPlayerIndex = 0;
     }
-    let index =
-      TcTournament.nextPlayerIndex - 1 + TcTournament.nextPlayerIndexRandom;
-    if (index >= players.length) {
-      index = index - players.length;
+    if (team.id == 1) {
+      console.log(team.lastPlayerIndexStart, team.nextPlayerIndex);
     }
-    return players[index];
+    const p = players[team.nextPlayerIndex];
+    if (team.lastPlayerIndexStart == team.nextPlayerIndex) {
+      TcTournament.shake(team);
+    }
+    return p;
   }
 }
