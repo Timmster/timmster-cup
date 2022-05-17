@@ -16,11 +16,50 @@ export const saveData = () => {
   localStorage.setItem(KEY_SAVEGAMES, JSON.stringify(SAVEGAMES));
 };
 
+const initNames = [
+  'Timm',
+  'Thomas',
+  'Kim',
+  'Kristin',
+  'Klaus',
+  'Lars',
+  /*  */
+  'Jan',
+  'Daniel',
+  'Sarena',
+  'Coco',
+  'Marcel',
+  'Caro',
+  /*  */
+  'Wencke',
+  'Alex',
+  'Budde',
+  'Sönke',
+  'Matze',
+  'Buddy',
+  /*  */
+  'Philipp',
+  'Horner',
+  'Ögi',
+  'Svenja',
+  'Franzose',
+  'Conny',
+];
+
+/*
+ */
+
 export const TEAMS = [
   new TcTeam(1, 'FC St. Pauli', 'FCSP', '#5B3A29', '#FFFFFF'),
   new TcTeam(2, 'Hamburger SV', 'HSV', '#0A3F86', '#FFFFFF'),
   new TcTeam(3, 'SV Werder Bremen', 'WERDER', '#1D9053', '#FFFFFF'),
-  new TcTeam(4, 'Team Ostsee - Hansa/Holstein', 'OSTSEE', '#CC3043', '#FFFFFF'),
+  new TcTeam(
+    4,
+    'Team Ostsee - Hansa & Holstein',
+    'OSTSEE',
+    '#CC3043',
+    '#FFFFFF'
+  ),
 ];
 
 export let PLAYERS = [];
@@ -32,7 +71,9 @@ export const initData = () => {
   const playerCount = 24;
   const perTeam = Math.floor(playerCount / TEAMS.length);
   for (let i = 0; i < playerCount; i++) {
-    const p = new TcPlayer('s' + (i + 1));
+    const runningName = 'Spieler ' + (i + 1);
+    const name = i < initNames.length ? initNames[i] : runningName;
+    const p = new TcPlayer(name);
     p.team = TEAMS[Math.floor(i / perTeam)];
     PLAYERS.push(p);
   }
