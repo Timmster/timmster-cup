@@ -6,27 +6,28 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  min-height: 50px;
+  min-height: 10vh;
 }
 
-.team {
+.subtitle {
   font-size: 0.8rem;
 }
 
-.onlyteam {
-  font-size: 2rem;
-}
-
-.player {
-  font-size: 1.5rem;
+.title {
+  font-size: 3vh;
   font-weight: bold;
 }
 
 .sport {
-  font-size: 1.5rem;
+  font-weight: bold;
+  font-size: 1rem;
   color: black;
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
+}
+
+.sport img {
+  width: 80px;
 }
 
 .sport0 {
