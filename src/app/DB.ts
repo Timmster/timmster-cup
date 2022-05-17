@@ -52,7 +52,8 @@ export const loadData = (savegame: string) => {
 
 export const initAllGames = () => {
   DATA = new TcTournament(PLAYERS);
-  DATA.initAllGames();
+  TcTournament.initAllGames(DATA);
+  console.log(DATA.matches);
 };
 
 const autoSave = () => {
