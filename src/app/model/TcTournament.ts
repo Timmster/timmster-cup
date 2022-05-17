@@ -112,9 +112,6 @@ export class TcTournament {
     if (team.nextPlayerIndex >= players.length) {
       team.nextPlayerIndex = 0;
     }
-    if (team.id == 1) {
-      console.log(team.lastPlayerIndexStart, team.nextPlayerIndex);
-    }
     const p = players[team.nextPlayerIndex];
     if (team.lastPlayerIndexStart == team.nextPlayerIndex) {
       TcTournament.shake(team);
