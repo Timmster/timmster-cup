@@ -1,4 +1,4 @@
-import { PLAYERS } from '../DB';
+import { DATA, PLAYERS } from '../DB';
 
 export class TcTeam {
   public nextPlayerIndex = 0;
@@ -14,5 +14,14 @@ export class TcTeam {
 
   static findPlayers(team: TcTeam) {
     return PLAYERS.filter((t) => t.team.id == team.id);
+  }
+
+  static countRunning(team: TcTeam) {
+    return DATA.matches
+      .filter((m) => m.running)
+      .filter(
+        (m) =>
+          m.playerAway1.team.id == team.id || m.playerHome1.team.id == team.id
+      ).length;
   }
 }

@@ -87,13 +87,24 @@ export class ScoreComponent implements OnInit {
 
   onChangeScore(event, match: TcMatch) {
     if (match.score) {
-      const nextGames = this.getMatchesFiltered(false).filter(
-        (m) => m.game == match.game
+      match.running = false;
+      const nextGames = DATA.matches.filter(
+        (m) => m.game == match.game && !m.score && m.running != true
       );
+      const thiz = this;
+      const sorter = function (m: TcMatch, m2: TcMatch) {
+        const t1 = m.playerHome1.team;
+        const t2 = m.playerAway1.team;
+        const running1 =
+          thiz.getHearts(t1, true).length + thiz.getHearts(t1, false).length;
+        const running2 =
+          thiz.getHearts(t2, true).length + thiz.getHearts(t2, false).length;
+        return 1000 - running2 - running1;
+      };
+      nextGames.sort(sorter);
       if (nextGames.length > 0) {
         nextGames[0].running = true;
       }
-      match.running = false;
     }
   }
 }

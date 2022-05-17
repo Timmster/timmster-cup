@@ -1,4 +1,3 @@
-import { trigger } from '@angular/animations';
 import { TEAMS } from '../DB';
 import { TcGame } from './tc-game.enum';
 import { TcMatch } from './TcMatch';
