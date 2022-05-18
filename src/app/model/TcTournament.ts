@@ -109,16 +109,30 @@ export class TcTournament {
     return TcTeam.findPlayers(team)[0];
   }
 
-  static getNextPlayer(team: TcTeam) {
-    const players = TcTeam.findPlayers(team);
-    team.nextPlayerIndex++;
-    if (team.nextPlayerIndex >= players.length) {
-      team.nextPlayerIndex = 0;
-    }
-    const p = players[team.nextPlayerIndex];
-    if (team.lastPlayerIndexStart == team.nextPlayerIndex) {
-      TcTournament.shake(team);
-    }
-    return p;
+  static countPlayedMatches(tournemant: TcTournament, player: TcPlayer) {
+    return tournemant.matches
+      .filter((m) => m.score)
+      .filter(
+        (m) =>
+          m.playerHome1?.id == player.id ||
+          m.playerHome2?.id == player.id ||
+          m.playerAway1?.id == player.id ||
+          m.playerAway2?.id == player.id
+      ).length;
+  }
+
+  static getNextPlayer(tournemant: TcTournament, team: TcTeam) {
+    const players = TcTeam.findPlayers(team).filter((p) => p.active);
+    const counts = new Map<TcPlayer, number>();
+    let min = 10000000000;
+    players.forEach((p) => {
+      const played = TcTournament.countPlayedMatches(tournemant, p);
+      counts.set(p, played);
+      if (played < min) {
+        min = played;
+      }
+    });
+    const leastPlays = players.filter((p) => counts.get(p) == min);
+    return leastPlays[Math.floor(Math.random() * leastPlays.length)];
   }
 }

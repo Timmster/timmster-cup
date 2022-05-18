@@ -1,4 +1,5 @@
 import { DATA, PLAYERS } from '../DB';
+import { TcPlayer } from './TcPlayer';
 
 export class TcTeam {
   public nextPlayerIndex = 0;
@@ -12,7 +13,7 @@ export class TcTeam {
     public color2: string
   ) {}
 
-  static findPlayers(team: TcTeam) {
+  static findPlayers(team: TcTeam): TcPlayer[] {
     return PLAYERS.filter((t) => t.team.id == team.id);
   }
 
