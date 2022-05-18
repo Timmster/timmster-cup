@@ -1,12 +1,12 @@
 .badge {
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 2px;
   border-radius: 8px;
   align-items: center;
   text-align: center;
   justify-content: center;
-  min-height: 10vh;
+  height: 7vh;
   cursor: pointer;
 }
 
