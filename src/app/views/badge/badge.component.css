@@ -10,25 +10,25 @@
   cursor: pointer;
 }
 
+.badge img {
+  width: 5vh;
+}
+
 .subtitle {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .title {
-  font-size: 3vh;
+  font-size: 2vh;
   font-weight: bold;
 }
 
 .sport {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: black;
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
-}
-
-.sport img {
-  width: 80px;
 }
 
 .sport0 {

@@ -2,16 +2,17 @@
   <table>
     <tr>
       <th>Team</th>
-      <th width="50%">Siege und Niederlagen</th>
+      <th width="50%">Herzen</th>
     </tr>
     <tr *ngFor="let team of getTeams()">
       <td><app-badge [team]="team"></app-badge></td>
-      <td>
+      <td style="text-align: left;">
         <div style="display: flex; flex-direction: column;">
           <div>
-            <span *ngFor="let h of getHearts(team, true)">❤️ </span>
+            Gewonnen:<span *ngFor="let h of getHearts(team, true)">❤️ </span>
           </div>
           <div>
+            Verloren:
             <span
               style="filter: grayscale(100%);"
               *ngFor="let h of getHearts(team, false)"

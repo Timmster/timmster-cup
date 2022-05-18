@@ -22,7 +22,7 @@
       *ngIf="editingPlayer != 2 && player2"
       (click)="editingPlayer = allowChange ? 2 : 0"
     >
-      / {{ player2.name }}</span
+      & {{ player2.name }}</span
     >
     <div *ngIf="editingPlayer == 2">
       <select [(ngModel)]="player2" (change)="changePlayer2($event)">
