@@ -82,8 +82,8 @@ export class TcTournament {
     });
     rows.forEach((team, index) => {
       if (index < half) {
-        let home1 = TcTournament.getNextPlayer(team);
-        let away1 = TcTournament.getNextPlayer(rows[index + half]);
+        let home1 = TcTournament.getCaptain(team);
+        let away1 = TcTournament.getCaptain(rows[index + half]);
         if (index == 0 && day % 2 == 0) {
           const swap = home1;
           home1 = away1;
@@ -92,8 +92,8 @@ export class TcTournament {
         if (!is2On2) {
           t.matches.push(TcMatch.create1on1(game, home1, away1));
         } else {
-          let home2 = TcTournament.getNextPlayer(team);
-          let away2 = TcTournament.getNextPlayer(rows[index + half]);
+          let home2 = TcTournament.getCaptain(team);
+          let away2 = TcTournament.getCaptain(rows[index + half]);
           if (index == 0 && day % 2 == 0) {
             const swap = home2;
             home2 = away2;
@@ -103,6 +103,10 @@ export class TcTournament {
         }
       }
     });
+  }
+
+  static getCaptain(team: TcTeam) {
+    return TcTeam.findPlayers(team)[0];
   }
 
   static getNextPlayer(team: TcTeam) {
