@@ -140,13 +140,26 @@ export class TcTournament {
     players.forEach((p) => {
       const played = TcTournament.countPlayedMatches(tournemant, p);
       const active = TcTournament.countActive(tournemant, p);
-      counts.set(p, played + 100 * active);
-      if (played < min) {
-        min = played;
+      const v = played + 100 * active;
+      counts.set(p, v);
+      if (v < min) {
+        min = v;
       }
     });
     const leastPlays = players.filter((p) => counts.get(p) == min);
-    return leastPlays[Math.floor(Math.random() * leastPlays.length)];
+    const index = Math.floor(Math.random() * leastPlays.length);
+    console.log(
+      team.name,
+      'counts=',
+      counts,
+      'least=',
+      leastPlays,
+      'min=',
+      min,
+      'INDEX = ',
+      index
+    );
+    return leastPlays[index];
   }
 
   static randomizeMatch(tournemant: TcTournament, match: TcMatch) {
