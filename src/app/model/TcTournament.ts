@@ -121,18 +121,52 @@ export class TcTournament {
       ).length;
   }
 
+  static countActive(tournemant: TcTournament, player: TcPlayer) {
+    return tournemant.matches
+      .filter((m) => m.running)
+      .filter(
+        (m) =>
+          m.playerHome1?.id == player.id ||
+          m.playerHome2?.id == player.id ||
+          m.playerAway1?.id == player.id ||
+          m.playerAway2?.id == player.id
+      ).length;
+  }
+
   static getNextPlayer(tournemant: TcTournament, team: TcTeam) {
     const players = TcTeam.findPlayers(team).filter((p) => p.active);
     const counts = new Map<TcPlayer, number>();
     let min = 10000000000;
     players.forEach((p) => {
       const played = TcTournament.countPlayedMatches(tournemant, p);
-      counts.set(p, played);
+      const active = TcTournament.countActive(tournemant, p);
+      counts.set(p, played + 100 * active);
       if (played < min) {
         min = played;
       }
     });
     const leastPlays = players.filter((p) => counts.get(p) == min);
     return leastPlays[Math.floor(Math.random() * leastPlays.length)];
+  }
+
+  static randomizeMatch(tournemant: TcTournament, match: TcMatch) {
+    match.playerAway1 = TcTournament.getNextPlayer(
+      tournemant,
+      match.playerAway1.team
+    );
+    match.playerHome1 = TcTournament.getNextPlayer(
+      tournemant,
+      match.playerHome1.team
+    );
+    if (match.playerAway2) {
+      match.playerAway2 = TcTournament.getNextPlayer(
+        tournemant,
+        match.playerAway2.team
+      );
+      match.playerHome2 = TcTournament.getNextPlayer(
+        tournemant,
+        match.playerHome2.team
+      );
+    }
   }
 }

@@ -37,7 +37,11 @@
       [ngClass]="match.running ? 'running' : ''"
     >
       <td *ngIf="isAdmin()">
-        <input type="checkbox" [(ngModel)]="match.running" />
+        <input
+          type="checkbox"
+          [(ngModel)]="match.running"
+          (change)="randomizeMatch(match)"
+        />
       </td>
       <td><app-badge [game]="match.game"></app-badge></td>
       <td>

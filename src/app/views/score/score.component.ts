@@ -4,6 +4,7 @@ import { DATA, TEAMS } from '../../DB';
 import { TcScore } from '../../model/tc-score';
 import { TcMatch } from '../../model/TcMatch';
 import { TcTeam } from '../../model/TcTeam';
+import { TcTournament } from '../../model/TcTournament';
 
 @Component({
   selector: 'app-score',
@@ -18,6 +19,10 @@ export class ScoreComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  randomizeMatch(match: TcMatch) {
+    TcTournament.randomizeMatch(DATA, match);
+  }
 
   isAdmin() {
     return AppComponent.ADMIN;
@@ -126,6 +131,7 @@ export class ScoreComponent implements OnInit {
       };
       nextGames = nextGames.sort(sorter);
       if (nextGames.length > 0) {
+        TcTournament.randomizeMatch(DATA, nextGames[0]);
         nextGames[0].running = true;
       }
     }
