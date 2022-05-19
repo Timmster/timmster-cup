@@ -65,7 +65,7 @@
           Ergebnis Eintragen
         </button>
         <select
-          *ngIf="match.score"
+          *ngIf="isAdmin()"
           class="score"
           [(ngModel)]="match.score"
           (change)="onChangeScore($event, match)"
@@ -77,6 +77,7 @@
           <option [ngValue]="SCORES[2]">
             {{ getTeamAway(match)?.name }}
           </option>
+          <option [ngValue]="SCORES[1]">Nicht gespielt</option>
         </select>
       </td>
     </tr>

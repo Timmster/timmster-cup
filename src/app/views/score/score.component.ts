@@ -100,7 +100,7 @@ export class ScoreComponent implements OnInit {
   }
 
   onChangeScore(event, match: TcMatch) {
-    if (match.score) {
+    if (match.score && match.running) {
       match.running = false;
       let nextGames = DATA.matches.filter(
         (m) => m.game == match.game && !m.score && m.running != true
