@@ -1,8 +1,8 @@
 <div
   *ngIf="player1 || team"
   class="badge"
-  [style.backgroundColor]="team?.color1"
-  [style.color]="team?.color2"
+  [style.backgroundColor]="team ? team.color1 : player1?.team?.color1"
+  [style.color]="team ? team?.color2 : player1?.team?.color2"
 >
   <div class="title">
     <span
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="subtitle" [ngClass]="player1 ? '' : 'title'">
-    {{ team?.name }}
+    {{ team ? team.name : player1?.team?.name }}
   </div>
 </div>
 

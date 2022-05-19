@@ -6,6 +6,7 @@
     <option *ngFor="let sg of SAVEGAMES">{{ sg }}</option>
   </select>
   <button (click)="loadPlan()">LOAD</button>
+  <button (click)="byClub = !byClub">Sortierung</button>
 </div>
 <table>
   <tr>

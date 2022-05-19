@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { DATA, TEAMS } from '../../DB';
 import { TcGame } from '../../model/tc-game.enum';
 import { TcPlayer } from '../../model/TcPlayer';
@@ -9,7 +17,7 @@ import { TcTeam } from '../../model/TcTeam';
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.css'],
 })
-export class BadgeComponent implements OnInit {
+export class BadgeComponent {
   @Input()
   game: TcGame;
 
@@ -27,12 +35,6 @@ export class BadgeComponent implements OnInit {
   editingPlayer = 0;
 
   constructor() {}
-
-  ngOnInit() {
-    if (this.player1) {
-      this.team = this.player1.team;
-    }
-  }
 
   changePlayer1(event) {
     this.editingPlayer = 0;

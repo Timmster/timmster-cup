@@ -17,6 +17,7 @@ import { TcPlayer } from '../../model/TcPlayer';
 export class DataComponent implements OnInit {
   SAVEGAMES = SAVEGAMES;
   savegame: string;
+  byClub = false;
 
   spieler: TcPlayer[] = [];
 
@@ -25,7 +26,27 @@ export class DataComponent implements OnInit {
   ngOnInit() {}
 
   getSpieler() {
-    return DATA.players;
+    let sorter = function (a: TcPlayer, b: TcPlayer) {
+      if (a.name < b.name) {
+        return -1;
+      }
+      if (a.name > b.name) {
+        return 1;
+      }
+      return 0;
+    };
+    if (this.byClub) {
+      sorter = function (a: TcPlayer, b: TcPlayer) {
+        if (a.team.id < b.team.id) {
+          return -1;
+        }
+        if (a.team.id > b.team.id) {
+          return 1;
+        }
+        return 0;
+      };
+    }
+    return DATA.players.sort(sorter);
   }
 
   getTeams() {
