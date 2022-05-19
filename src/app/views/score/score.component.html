@@ -2,19 +2,21 @@
   <table>
     <tr>
       <th>Team</th>
-      <th width="50%">Siege / Niederlagen</th>
+      <th width="50%">🏆 Siege + Niederlagen😡</th>
     </tr>
     <tr *ngFor="let team of getTeams()">
       <td><app-badge [team]="team"></app-badge></td>
       <td style="text-align: left;">
         <div style="display: flex; flex-direction: column;">
           <div>
-            <span class="symbol wins" *ngFor="let h of getHearts(team, true)"
+            <span class="symbol wins" *ngFor="let h of countHearts(team, true)"
               >🏆
             </span>
           </div>
           <div>
-            <span class="symbol loses" *ngFor="let h of getHearts(team, false)"
+            <span
+              class="symbol loses"
+              *ngFor="let h of countHearts(team, false)"
               >😡
             </span>
           </div>

@@ -39,10 +39,10 @@ export class ScoreComponent implements OnInit {
   getTeams() {
     const thiz = this;
     const sorter = function (m1: TcTeam, m2: TcTeam) {
-      const wins1 = thiz.getHearts(m2, true)?.length;
-      const wins2 = thiz.getHearts(m1, true)?.length;
-      const los1 = thiz.getHearts(m2, false)?.length;
-      const los2 = thiz.getHearts(m1, false)?.length;
+      const wins1 = thiz.countHearts(m2, true)?.length;
+      const wins2 = thiz.countHearts(m1, true)?.length;
+      const los1 = thiz.countHearts(m2, false)?.length;
+      const los2 = thiz.countHearts(m1, false)?.length;
       if (wins1 != wins2) {
         return wins1 - wins2;
       }
@@ -54,8 +54,8 @@ export class ScoreComponent implements OnInit {
     return TEAMS.sort(sorter);
   }
 
-  getHearts(team: TcTeam, wins: boolean) {
-    return DATA.matches.filter(
+  countHearts(team: TcTeam, wins: boolean) {
+    const matches = DATA.matches.filter(
       (m) =>
         (TcMatch.getTeamHome(m)?.id == team.id &&
           m.score == TcScore.HOME &&
@@ -70,6 +70,14 @@ export class ScoreComponent implements OnInit {
           m.score == TcScore.HOME &&
           !wins)
     );
+    let points = [];
+    matches.forEach((m) => {
+      points.push('');
+      if (m.playerAway2 != null && m.playerHome2 != null) {
+        points.push('');
+      }
+    });
+    return points;
   }
 
   getMatchesFiltered(runningFilter: boolean) {
@@ -111,20 +119,20 @@ export class ScoreComponent implements OnInit {
         const t2 = m.playerAway1.team;
         const running1 =
           1000 -
-          thiz.getHearts(t1, true).length +
-          thiz.getHearts(t1, false).length +
-          thiz.getHearts(t2, true).length +
-          thiz.getHearts(t2, false).length +
+          thiz.countHearts(t1, true).length +
+          thiz.countHearts(t1, false).length +
+          thiz.countHearts(t2, true).length +
+          thiz.countHearts(t2, false).length +
           TcTeam.countRunning(t1) +
           TcTeam.countRunning(t2);
         const t3 = m.playerHome1.team;
         const t4 = m.playerAway1.team;
         const running2 =
           1000 -
-          thiz.getHearts(t3, true).length +
-          thiz.getHearts(t3, false).length +
-          thiz.getHearts(t4, true).length +
-          thiz.getHearts(t4, false).length +
+          thiz.countHearts(t3, true).length +
+          thiz.countHearts(t3, false).length +
+          thiz.countHearts(t4, true).length +
+          thiz.countHearts(t4, false).length +
           TcTeam.countRunning(t3) +
           TcTeam.countRunning(t4);
         return running1 - running2;
