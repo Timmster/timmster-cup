@@ -148,17 +148,6 @@ export class TcTournament {
     });
     const leastPlays = players.filter((p) => counts.get(p) == min);
     const index = Math.floor(Math.random() * leastPlays.length);
-    console.log(
-      team.name,
-      'counts=',
-      counts,
-      'least=',
-      leastPlays,
-      'min=',
-      min,
-      'INDEX = ',
-      index
-    );
     return leastPlays[index];
   }
 
