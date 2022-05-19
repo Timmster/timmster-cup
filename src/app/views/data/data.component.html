@@ -26,7 +26,9 @@
     <span>{{ spieler.id }}</span>
     <td>
       <select [(ngModel)]="spieler.team">
-        <option *ngFor="let t of getTeams()" [ngValue]="t">{{ t.name }}</option>
+        <option *ngFor="let t of getTeams()" [ngValue]="t">
+          {{ t.name }}
+        </option>
       </select>
     </td>
     <td><input type="checkbox" [(ngModel)]="spieler.active" /></td>
